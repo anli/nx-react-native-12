@@ -15,7 +15,11 @@
     "@react-navigation/native": "*",
     "@react-navigation/native-stack": "*",
     "react-native-safe-area-context": "*",
-    "react-native-screens": "*"
+    "react-native-screens": "*",
+    "nativewind": "*",
+    "react-native-reanimated": "*",
+    "tailwindcss": "*",
+    "clsx": "*"
   },
   "devDependencies": {
     "@babel/core": "*",
