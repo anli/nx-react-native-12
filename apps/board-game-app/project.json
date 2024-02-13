@@ -1,0 +1,8 @@
+{
+  "name": "board-game",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/board-game-app/src",
+  "projectType": "application",
+  "targets": {},
+  "tags": []
+}
