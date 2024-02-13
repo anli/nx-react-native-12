@@ -1,0 +1,12 @@
+{
+  "name": "@nx-react-native/source",
+  "version": "0.0.0",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "@nx/js": "18.0.4",
+    "@nx/workspace": "18.0.4",
+    "nx": "18.0.4"
+  },
+  "packageManager": "yarn@4.1.0"
+}
