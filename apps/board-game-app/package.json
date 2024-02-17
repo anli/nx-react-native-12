@@ -1,5 +1,5 @@
 {
-  "name": "board-game",
+  "name": "boardgame",
   "version": "0.0.1",
   "private": true,
   "dependencies": {
@@ -19,7 +19,8 @@
     "nativewind": "*",
     "react-native-reanimated": "*",
     "tailwindcss": "*",
-    "clsx": "*"
+    "clsx": "*",
+    "react-native-auth0": "*"
   },
   "devDependencies": {
     "@babel/core": "*",

@@ -1,0 +1,8 @@
+{
+  "name": "features-authenticate",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/features/authenticate/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {}
+}
