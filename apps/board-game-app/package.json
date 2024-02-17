@@ -20,7 +20,8 @@
     "react-native-reanimated": "*",
     "tailwindcss": "*",
     "clsx": "*",
-    "react-native-auth0": "*"
+    "react-native-auth0": "*",
+    "react-native-config": "*"
   },
   "devDependencies": {
     "@babel/core": "*",
