@@ -21,7 +21,9 @@
     "tailwindcss": "*",
     "clsx": "*",
     "react-native-auth0": "*",
-    "react-native-config": "*"
+    "react-native-config": "*",
+    "@apollo/client": "*",
+    "graphql": "*"
   },
   "devDependencies": {
     "@babel/core": "*",

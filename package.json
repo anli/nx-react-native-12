@@ -50,9 +50,11 @@
   },
   "packageManager": "yarn@4.1.0",
   "dependencies": {
+    "@apollo/client": "^3.9.5",
     "@react-navigation/native": "^6.1.10",
     "@react-navigation/native-stack": "^6.9.18",
     "clsx": "^2.1.0",
+    "graphql": "^16.8.1",
     "nativewind": "^4.0.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
