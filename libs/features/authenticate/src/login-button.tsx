@@ -1,5 +1,5 @@
 import { BoxButton } from '@shared/ui';
-import { useAuthentication } from './use-authentication';
+import { useAuthentication } from '@shared/utils';
 
 export const LoginButton = () => {
   const { login } = useAuthentication();
