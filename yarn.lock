@@ -2379,6 +2379,7 @@ __metadata:
     react-dom: "npm:18.2.0"
     react-native: "npm:0.73.2"
     react-native-auth0: "npm:^3.1.0"
+    react-native-config: "npm:^1.5.1"
     react-native-reanimated: "npm:^3.7.0"
     react-native-safe-area-context: "npm:^4.9.0"
     react-native-screens: "npm:^3.29.0"
@@ -12524,6 +12525,18 @@ __metadata:
     expo:
       optional: true
   checksum: 10c0/e8e3bc3f859c8f916440ca9bd612261fe4eebd1f1fc9068fd243fb4e2c2c67239f226130853f3628363228d8e79d83dc8472c51a76839299705121d5a9ea0733
+  languageName: node
+  linkType: hard
+
+"react-native-config@npm:^1.5.1":
+  version: 1.5.1
+  resolution: "react-native-config@npm:1.5.1"
+  peerDependencies:
+    react-native-windows: ">=0.61"
+  peerDependenciesMeta:
+    react-native-windows:
+      optional: true
+  checksum: 10c0/bde915ccc2c43df5e5a3f1df1c68495b598dc788cd0227d3b7a847b37fd6bbcf094a5cf9932816f7599132fa9e201c1d4db134f99e72565d20c30f69777d07ed
   languageName: node
   linkType: hard
 
