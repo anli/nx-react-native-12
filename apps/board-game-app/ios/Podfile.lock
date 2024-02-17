@@ -1,4 +1,12 @@
 PODS:
+  - A0Auth0 (3.1.0):
+    - Auth0 (= 2.5.0)
+    - JWTDecode (= 3.1.0)
+    - React-Core
+    - SimpleKeychain (= 1.1.0)
+  - Auth0 (2.5.0):
+    - JWTDecode (~> 3.1)
+    - SimpleKeychain (~> 1.1)
   - boost (1.83.0)
   - CocoaAsyncSocket (7.6.5)
   - DoubleConversion (1.1.6)
@@ -71,6 +79,7 @@ PODS:
   - hermes-engine (0.73.2):
     - hermes-engine/Pre-built (= 0.73.2)
   - hermes-engine/Pre-built (0.73.2)
+  - JWTDecode (3.1.0)
   - libevent (2.1.12)
   - OpenSSL-Universal (1.1.1100)
   - RCT-Folly (2022.05.16.00):
@@ -1124,10 +1133,12 @@ PODS:
     - React-Core
   - RNSVG (14.1.0):
     - React-Core
+  - SimpleKeychain (1.1.0)
   - SocketRocket (0.6.1)
   - Yoga (1.14.0)
 
 DEPENDENCIES:
+  - A0Auth0 (from `../../../node_modules/react-native-auth0`)
   - boost (from `../../../node_modules/react-native/third-party-podspecs/boost.podspec`)
   - DoubleConversion (from `../../../node_modules/react-native/third-party-podspecs/DoubleConversion.podspec`)
   - FBLazyVector (from `../../../node_modules/react-native/Libraries/FBLazyVector`)
@@ -1208,6 +1219,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Auth0
     - CocoaAsyncSocket
     - Flipper
     - Flipper-Boost-iOSX
@@ -1218,11 +1230,15 @@ SPEC REPOS:
     - Flipper-PeerTalk
     - FlipperKit
     - fmt
+    - JWTDecode
     - libevent
     - OpenSSL-Universal
+    - SimpleKeychain
     - SocketRocket
 
 EXTERNAL SOURCES:
+  A0Auth0:
+    :path: "../../../node_modules/react-native-auth0"
   boost:
     :podspec: "../../../node_modules/react-native/third-party-podspecs/boost.podspec"
   DoubleConversion:
@@ -1330,6 +1346,8 @@ EXTERNAL SOURCES:
     :path: "../../../node_modules/react-native/ReactCommon/yoga"
 
 SPEC CHECKSUMS:
+  A0Auth0: d6fa13c9daf99f5fb17a412837ea37f8db38a562
+  Auth0: 72f19ad566fdf57f07bf37f828afd0c1570769a5
   boost: d3f49c53809116a5d38da093a8aa78bf551aed09
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
   DoubleConversion: fea03f2699887d960129cc54bba7e52542b6f953
@@ -1346,6 +1364,7 @@ SPEC CHECKSUMS:
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
   glog: c5d68082e772fa1c511173d6b30a9de2c05a69a2
   hermes-engine: b361c9ef5ef3cda53f66e195599b47e1f84ffa35
+  JWTDecode: 3eaab1e06b6f4dcbdd6716aff09ba4c2104ca8b7
   libevent: 4049cae6c81cdb3654a443be001fb9bdceff7913
   OpenSSL-Universal: ebc357f1e6bc71fa463ccb2fe676756aff50e88c
   RCT-Folly: 7169b2b1c44399c76a47b5deaaba715eeeb476c0
@@ -1393,6 +1412,7 @@ SPEC CHECKSUMS:
   RNReanimated: ec630a026d5bec1e5a06873830795d8a6d257f21
   RNScreens: b582cb834dc4133307562e930e8fa914b8c04ef2
   RNSVG: ba3e7232f45e34b7b47e74472386cf4e1a676d0a
+  SimpleKeychain: f8707c8e97b38c6a6e687b17732afc9bcef06439
   SocketRocket: f32cd54efbe0f095c4d7594881e52619cfe80b17
   Yoga: e64aa65de36c0832d04e8c7bd614396c77a80047
 

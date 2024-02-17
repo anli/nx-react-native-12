@@ -74,13 +74,14 @@ android {
     buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdk rootProject.ext.compileSdkVersion
 
-    namespace "com.boardgame"
+    namespace "com.anlitz.boardgame"
     defaultConfig {
-        applicationId "com.boardgame"
+        applicationId "com.anlitz.boardgame"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        manifestPlaceholders = [auth0Domain: "anlitz.au.auth0.com", auth0Scheme: "com.anlitz.boardgame.auth0"]
     }
     signingConfigs {
         debug {

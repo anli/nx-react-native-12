@@ -1,4 +1,5 @@
-import { BoxButton, SafeAreaView } from '@shared/ui';
+import { LoginButton } from '@features/authenticate';
+import { SafeAreaView } from '@shared/ui';
 import { Text, View } from 'react-native';
 
 export const WelcomePage = () => {
@@ -9,7 +10,7 @@ export const WelcomePage = () => {
           <View className="flex-1">
             <Text>Welcome Page</Text>
           </View>
-          <BoxButton type="solid" color="primary" title="Login" />
+          <LoginButton />
         </View>
       </SafeAreaView>
     </View>

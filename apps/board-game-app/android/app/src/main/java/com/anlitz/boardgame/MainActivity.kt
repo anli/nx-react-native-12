@@ -1,4 +1,4 @@
-package com.boardgame
+package com.anlitz.boardgame
 
 import android.os.Bundle
 import com.facebook.react.ReactActivity
