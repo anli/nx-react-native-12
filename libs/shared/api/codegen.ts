@@ -12,15 +12,15 @@ const config: CodegenConfig = {
       },
     },
   ],
-  documents: ['./src/**/*.graphql'],
+  documents: ['./../../**/*.graphql'],
   overwrite: true,
   generates: {
     './src/graphql-types.ts': { plugins: ['typescript'] },
-    './src': {
+    '@shared/api': {
       preset: 'near-operation-file',
       presetConfig: {
         extension: '.generated.tsx',
-        baseTypesPath: 'graphql-types.ts',
+        baseTypesPath: '~@shared/api',
       },
       plugins: ['typescript-operations', 'typescript-react-apollo'],
       config: {

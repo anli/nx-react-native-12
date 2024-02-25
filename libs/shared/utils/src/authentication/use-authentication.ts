@@ -13,7 +13,7 @@ export const useAuthentication = () => {
 
   return {
     isAuthenticated: !!user,
-    id: user?.sub,
+    id: user?.sub ?? '',
     imageUrl: user?.picture,
     login,
     logout,
