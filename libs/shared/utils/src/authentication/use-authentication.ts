@@ -11,5 +11,13 @@ export const useAuthentication = () => {
     await clearSession();
   };
 
-  return { isAuthenticated: !!user, login, logout, user, ...rest };
+  return {
+    isAuthenticated: !!user,
+    id: user?.sub,
+    imageUrl: user?.picture,
+    login,
+    logout,
+    user,
+    ...rest,
+  };
 };
