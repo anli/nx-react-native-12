@@ -13,8 +13,33 @@
             "allow": [],
             "depConstraints": [
               {
-                "sourceTag": "*",
-                "onlyDependOnLibsWithTags": ["*"]
+                "sourceTag": "type:app",
+                "onlyDependOnLibsWithTags": [
+                  "type:widgets",
+                  "type:features",
+                  "type:entities",
+                  "type:shared"
+                ]
+              },
+              {
+                "sourceTag": "type:widgets",
+                "onlyDependOnLibsWithTags": [
+                  "type:features",
+                  "type:entities",
+                  "type:shared"
+                ]
+              },
+              {
+                "sourceTag": "type:features",
+                "onlyDependOnLibsWithTags": ["type:entities", "type:shared"]
+              },
+              {
+                "sourceTag": "type:entities",
+                "onlyDependOnLibsWithTags": ["type:shared"]
+              },
+              {
+                "sourceTag": "type:shared",
+                "onlyDependOnLibsWithTags": ["type:shared"]
               }
             ]
           }

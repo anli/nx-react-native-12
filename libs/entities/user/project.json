@@ -3,6 +3,6 @@
   "$schema": "../../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "libs/entities/user/src",
   "projectType": "library",
-  "tags": [],
+  "tags": ["type:entities"],
   "targets": {}
 }
