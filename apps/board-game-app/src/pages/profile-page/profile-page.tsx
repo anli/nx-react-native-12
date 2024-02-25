@@ -1,5 +1,5 @@
-import { gql, useQuery } from '@apollo/client';
 import { LogoutButton } from '@features/authenticate';
+import { useGetUserQuery } from '@shared/api';
 import { Profile, SafeAreaView, Text } from '@shared/ui';
 import { useAuthentication } from '@shared/utils';
 import { View } from 'react-native';
@@ -21,7 +21,7 @@ export const ProfilePage = () => {
 
 const UserProfileCurrent = () => {
   const { id, imageUrl } = useAuthentication();
-  const { data } = useUser(id);
+  const { data } = useGetUserQuery({ variables: { id } });
 
   return (
     <View className="flex-row gap-4">
@@ -30,23 +30,5 @@ const UserProfileCurrent = () => {
         <Text className="text-2xl font-medium">{data?.users_by_pk?.name}</Text>
       </View>
     </View>
-  );
-};
-
-const useUser = (id: string) => {
-  return useQuery(
-    gql`
-      query GetUser($id: String!) {
-        users_by_pk(id: $id) {
-          id
-          name
-        }
-      }
-    `,
-    {
-      variables: {
-        id,
-      },
-    }
   );
 };
