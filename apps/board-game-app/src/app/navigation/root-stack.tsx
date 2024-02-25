@@ -1,5 +1,5 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { WelcomePage } from '../../pages';
+import { LoadingPage, WelcomePage } from '../../pages';
 
 const Stack = createNativeStackNavigator();
 const screenOptions = {
@@ -13,6 +13,7 @@ export const RootStack = () => {
       initialRouteName="WelcomePage"
     >
       <Stack.Screen name="WelcomePage" component={WelcomePage} />
+      <Stack.Screen name="LoadingPage" component={LoadingPage} />
     </Stack.Navigator>
   );
 };
