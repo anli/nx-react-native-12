@@ -2396,6 +2396,7 @@ __metadata:
     "@react-native-community/cli-platform-android": "npm:12.3.0"
     "@react-native/babel-preset": "npm:^0.73.18"
     "@react-native/metro-config": "npm:^0.73.2"
+    "@react-navigation/bottom-tabs": "npm:^6.5.14"
     "@react-navigation/native": "npm:^6.1.10"
     "@react-navigation/native-stack": "npm:^6.9.18"
     "@swc-node/register": "npm:~1.8.0"
@@ -2429,6 +2430,7 @@ __metadata:
     react-native: "npm:0.73.2"
     react-native-auth0: "npm:^3.1.0"
     react-native-config: "npm:^1.5.1"
+    react-native-heroicons: "npm:^4.0.0"
     react-native-progress: "npm:^5.0.1"
     react-native-reanimated: "npm:^3.7.0"
     react-native-safe-area-context: "npm:^4.9.0"
@@ -3253,6 +3255,23 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-navigation/bottom-tabs@npm:^6.5.14":
+  version: 6.5.14
+  resolution: "@react-navigation/bottom-tabs@npm:6.5.14"
+  dependencies:
+    "@react-navigation/elements": "npm:^1.3.24"
+    color: "npm:^4.2.3"
+    warn-once: "npm:^0.1.0"
+  peerDependencies:
+    "@react-navigation/native": ^6.0.0
+    react: "*"
+    react-native: "*"
+    react-native-safe-area-context: ">= 3.0.0"
+    react-native-screens: ">= 3.0.0"
+  checksum: 10c0/09299d8a34d8896684a5a7b595c8b461282b69d3f921afa4c9974c5e6ff7c096a547077c3e2b6514946ef5fd0d74f00932f87585f50466d75bd46061379d4e6c
+  languageName: node
+  linkType: hard
+
 "@react-navigation/core@npm:^6.4.10":
   version: 6.4.10
   resolution: "@react-navigation/core@npm:6.4.10"
@@ -3278,6 +3297,18 @@ __metadata:
     react-native: "*"
     react-native-safe-area-context: ">= 3.0.0"
   checksum: 10c0/e927e817df87145c9d3ef719d01bc1f2b8a3ecfa334a2803f6d47563e865a9c5f49c8f4ca63fbe45904cc08558e0b70bbc11d71cd62f9bff9d9724ea6a8a857d
+  languageName: node
+  linkType: hard
+
+"@react-navigation/elements@npm:^1.3.24":
+  version: 1.3.24
+  resolution: "@react-navigation/elements@npm:1.3.24"
+  peerDependencies:
+    "@react-navigation/native": ^6.0.0
+    react: "*"
+    react-native: "*"
+    react-native-safe-area-context: ">= 3.0.0"
+  checksum: 10c0/b7e592f1e6bcebab73830fa3ac6ea5a9ffe3c8b045455f61636a8a1c708fb308269ac14e36d40bdc96e9b27422a688f1ee13c619dff901430cd9bb3229d6375e
   languageName: node
   linkType: hard
 
@@ -5847,10 +5878,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"color-name@npm:~1.1.4":
+"color-name@npm:^1.0.0, color-name@npm:~1.1.4":
   version: 1.1.4
   resolution: "color-name@npm:1.1.4"
   checksum: 10c0/a1a3f914156960902f46f7f56bc62effc6c94e84b2cae157a526b1c1f74b677a47ec602bf68a61abfa2b42d15b7c5651c6dbe72a43af720bc588dff885b10f95
+  languageName: node
+  linkType: hard
+
+"color-string@npm:^1.9.0":
+  version: 1.9.1
+  resolution: "color-string@npm:1.9.1"
+  dependencies:
+    color-name: "npm:^1.0.0"
+    simple-swizzle: "npm:^0.2.2"
+  checksum: 10c0/b0bfd74c03b1f837f543898b512f5ea353f71630ccdd0d66f83028d1f0924a7d4272deb278b9aef376cacf1289b522ac3fb175e99895283645a2dc3a33af2404
+  languageName: node
+  linkType: hard
+
+"color@npm:^4.2.3":
+  version: 4.2.3
+  resolution: "color@npm:4.2.3"
+  dependencies:
+    color-convert: "npm:^2.0.1"
+    color-string: "npm:^1.9.0"
+  checksum: 10c0/7fbe7cfb811054c808349de19fb380252e5e34e61d7d168ec3353e9e9aacb1802674bddc657682e4e9730c2786592a4de6f8283e7e0d3870b829bb0b7b2f6118
   languageName: node
   linkType: hard
 
@@ -8836,6 +8887,13 @@ __metadata:
   version: 0.2.1
   resolution: "is-arrayish@npm:0.2.1"
   checksum: 10c0/e7fb686a739068bb70f860b39b67afc62acc62e36bb61c5f965768abce1873b379c563e61dd2adad96ebb7edf6651111b385e490cf508378959b0ed4cac4e729
+  languageName: node
+  linkType: hard
+
+"is-arrayish@npm:^0.3.1":
+  version: 0.3.2
+  resolution: "is-arrayish@npm:0.3.2"
+  checksum: 10c0/f59b43dc1d129edb6f0e282595e56477f98c40278a2acdc8b0a5c57097c9eff8fe55470493df5775478cf32a4dc8eaf6d3a749f07ceee5bc263a78b2434f6a54
   languageName: node
   linkType: hard
 
@@ -12704,6 +12762,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-heroicons@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "react-native-heroicons@npm:4.0.0"
+  peerDependencies:
+    react: ">=16.8"
+    react-native-svg: ">=9"
+  checksum: 10c0/bb8d4bdd567414e7a4fb69c3dfc722083795ae4f10c580747d01311a0a1cdeb050a8e1f147f40abd35e910e193ee1045f46573f6a25797fed84edbfecf8d98ae
+  languageName: node
+  linkType: hard
+
 "react-native-progress@npm:^5.0.1":
   version: 5.0.1
   resolution: "react-native-progress@npm:5.0.1"
@@ -13642,6 +13710,15 @@ __metadata:
   version: 4.1.0
   resolution: "signal-exit@npm:4.1.0"
   checksum: 10c0/41602dce540e46d599edba9d9860193398d135f7ff72cab629db5171516cfae628d21e7bfccde1bbfdf11c48726bc2a6d1a8fb8701125852fbfda7cf19c6aa83
+  languageName: node
+  linkType: hard
+
+"simple-swizzle@npm:^0.2.2":
+  version: 0.2.2
+  resolution: "simple-swizzle@npm:0.2.2"
+  dependencies:
+    is-arrayish: "npm:^0.3.1"
+  checksum: 10c0/df5e4662a8c750bdba69af4e8263c5d96fe4cd0f9fe4bdfa3cbdeb45d2e869dff640beaaeb1ef0e99db4d8d2ec92f85508c269f50c972174851bc1ae5bd64308
   languageName: node
   linkType: hard
 

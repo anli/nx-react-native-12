@@ -11,5 +11,5 @@ export const useAuthentication = () => {
     await clearSession();
   };
 
-  return { isAuthenticated: !user, login, logout, user, ...rest };
+  return { isAuthenticated: !!user, login, logout, user, ...rest };
 };

@@ -1,16 +1,16 @@
-import { LoginButton } from '@features/authenticate';
+import { LogoutButton } from '@features/authenticate';
 import { SafeAreaView, Text } from '@shared/ui';
 import { View } from 'react-native';
 
-export const WelcomePage = () => {
+export const ProfilePage = () => {
   return (
     <View className="flex-1">
-      <SafeAreaView>
+      <SafeAreaView edges={['top']}>
         <View className="flex-1 p-4 gap-4">
           <View className="flex-1">
-            <Text>Welcome Page</Text>
+            <Text>Profile Page</Text>
           </View>
-          <LoginButton />
+          <LogoutButton />
         </View>
       </SafeAreaView>
     </View>

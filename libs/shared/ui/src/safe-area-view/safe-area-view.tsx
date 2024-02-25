@@ -2,10 +2,10 @@ import { FC } from 'react';
 import { StyleSheet } from 'react-native';
 import {
   SafeAreaView as NativeSafeAreaView,
-  SafeAreaProviderProps,
+  SafeAreaViewProps,
 } from 'react-native-safe-area-context';
 
-export const SafeAreaView: FC<SafeAreaProviderProps> = ({
+export const SafeAreaView: FC<SafeAreaViewProps> = ({
   children,
   style,
   ...rest
