@@ -1,7 +1,6 @@
+import { UserProfileCurrent } from '@entities/user';
 import { LogoutButton } from '@features/authenticate';
-import { useGetUserQuery } from '@shared/api';
-import { Profile, SafeAreaView, Text } from '@shared/ui';
-import { useAuthentication } from '@shared/utils';
+import { SafeAreaView } from '@shared/ui';
 import { View } from 'react-native';
 
 export const ProfilePage = () => {
@@ -15,20 +14,6 @@ export const ProfilePage = () => {
           <LogoutButton />
         </View>
       </SafeAreaView>
-    </View>
-  );
-};
-
-const UserProfileCurrent = () => {
-  const { id, imageUrl } = useAuthentication();
-  const { data } = useGetUserQuery({ variables: { id } });
-
-  return (
-    <View className="flex-row gap-4">
-      <Profile source={{ uri: imageUrl }} />
-      <View className="flex-1 justify-center">
-        <Text className="text-2xl font-medium">{data?.users_by_pk?.name}</Text>
-      </View>
     </View>
   );
 };

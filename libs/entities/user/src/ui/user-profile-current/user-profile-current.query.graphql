@@ -1,4 +1,4 @@
-query GetUser($id: String!) {
+query UserProfileCurrent($id: String!) {
   users_by_pk(id: $id) {
     ...user
   }

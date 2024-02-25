@@ -1,4 +1,3 @@
 fragment user on users {
-  id
   name
 }
