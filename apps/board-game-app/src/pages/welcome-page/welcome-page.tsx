@@ -1,6 +1,6 @@
 import { LoginButton, LogoutButton } from '@features/authenticate';
-import { SafeAreaView } from '@shared/ui';
-import { Text, View } from 'react-native';
+import { SafeAreaView, Text } from '@shared/ui';
+import { View } from 'react-native';
 
 export const WelcomePage = () => {
   return (
