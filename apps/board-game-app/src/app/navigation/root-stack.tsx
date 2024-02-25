@@ -5,7 +5,7 @@ import {
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { BottomNavigation, BottomNavigationProps } from '@shared/ui';
 import { useAuthentication } from '@shared/utils';
-import { LoadingPage, ProfilePage, WelcomePage } from '../../pages';
+import { LoadingPage, PlaysPage, ProfilePage, WelcomePage } from '../../pages';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -17,6 +17,14 @@ const iconConfigs: BottomNavigationProps['iconConfigs'] = {
   PlaysTab: { name: 'PuzzlePieceIcon' },
   StatsTab: { name: 'ChartBarIcon' },
   ProfileTab: { name: 'UserIcon' },
+};
+
+const PlaysTab = () => {
+  return (
+    <Stack.Navigator screenOptions={screenOptions}>
+      <Stack.Screen name="PlaysPage" component={PlaysPage} />
+    </Stack.Navigator>
+  );
 };
 
 const ProfileTab = () => {
@@ -38,6 +46,13 @@ const Tabs = () => {
       screenOptions={screenOptions}
       tabBar={TabBar}
     >
+      <Tab.Screen
+        name="PlaysTab"
+        component={PlaysTab}
+        options={{
+          title: 'Plays',
+        }}
+      />
       <Tab.Screen
         name="ProfileTab"
         component={ProfileTab}

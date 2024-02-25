@@ -1,0 +1,5 @@
+query PlaysList {
+  plays {
+    ...PlaysListItem
+  }
+}

@@ -11,6 +11,7 @@ module.exports = {
         // Add every directory that needs to be compiled by Babel during the build.
         include: [
           path.resolve(appDirectory, 'node_modules/react-native-progress'),
+          path.resolve(appDirectory, 'node_modules/react-native-css-interop'),
         ],
         use: {
           loader: 'babel-loader',

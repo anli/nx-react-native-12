@@ -1,7 +1,7 @@
 import * as Types from '@shared/api';
 
 import { gql } from '@apollo/client';
-import { UserFragmentDoc } from './user-profile-current.fragment.generated';
+import { UserProfileCurrentFragmentDoc } from './user-profile-current.fragment.generated';
 import * as Apollo from '@apollo/client';
 const defaultOptions = {} as const;
 export type UserProfileCurrentQueryVariables = Types.Exact<{
@@ -10,16 +10,16 @@ export type UserProfileCurrentQueryVariables = Types.Exact<{
 
 export type UserProfileCurrentQuery = {
   __typename?: 'query_root';
-  users_by_pk?: { __typename?: 'users'; name: string } | null;
+  usersByPk?: { __typename?: 'Users'; name: string } | null;
 };
 
 export const UserProfileCurrentDocument = gql`
   query UserProfileCurrent($id: String!) {
-    users_by_pk(id: $id) {
-      ...user
+    usersByPk(id: $id) {
+      ...UserProfileCurrent
     }
   }
-  ${UserFragmentDoc}
+  ${UserProfileCurrentFragmentDoc}
 `;
 
 /**

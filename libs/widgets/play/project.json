@@ -1,0 +1,8 @@
+{
+  "name": "widgets-play",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/widgets/play/src",
+  "projectType": "library",
+  "tags": ["type:widgets"],
+  "targets": {}
+}

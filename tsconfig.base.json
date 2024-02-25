@@ -19,7 +19,8 @@
       "@features/authenticate": ["libs/features/authenticate/src/index.ts"],
       "@shared/api": ["libs/shared/api/src/index.ts"],
       "@shared/ui": ["libs/shared/ui/src/index.ts"],
-      "@shared/utils": ["libs/shared/utils/src/index.ts"]
+      "@shared/utils": ["libs/shared/utils/src/index.ts"],
+      "@widgets/play": ["libs/widgets/play/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
