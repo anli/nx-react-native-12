@@ -1,17 +1,28 @@
 import clsx from 'clsx';
 import { FC } from 'react';
-import { Pressable, PressableProps, Text, View } from 'react-native';
+import { Pressable, PressableProps, Text } from 'react-native';
 
-const typeConfigs = {
-  solid: {
-    container: 'bg-green-500',
-  },
+type BoxButtonType = 'solid' | 'plain';
+type BoxButtonProps = PressableProps & {
+  type: BoxButtonType;
+  title: string;
 };
 
-type BoxButtonProps = PressableProps & {
-  type: 'solid';
-  color: 'primary';
-  title: string;
+const typeConfigs: Record<
+  BoxButtonType,
+  {
+    container?: string;
+    text?: string;
+  }
+> = {
+  solid: {
+    container: 'bg-green-500',
+    text: 'text-white',
+  },
+  plain: {
+    container: '',
+    text: 'text-black',
+  },
 };
 
 export const BoxButton: FC<BoxButtonProps> = ({
@@ -24,12 +35,17 @@ export const BoxButton: FC<BoxButtonProps> = ({
     <Pressable
       className={clsx(
         'py-3.5 px-6 rounded-md',
-        typeConfigs[type].container,
+        typeConfigs[type]?.container,
         className
       )}
       {...rest}
     >
-      <Text className="text-white font-semibold text-base text-center">
+      <Text
+        className={clsx(
+          'font-semibold text-base text-center',
+          typeConfigs[type]?.text
+        )}
+      >
         {title}
       </Text>
     </Pressable>

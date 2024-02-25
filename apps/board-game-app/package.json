@@ -23,7 +23,10 @@
     "react-native-auth0": "*",
     "react-native-config": "*",
     "@apollo/client": "*",
-    "graphql": "*"
+    "graphql": "*",
+    "@react-navigation/bottom-tabs": "*",
+    "react-native-heroicons": "*",
+    "react-native-progress": "*"
   },
   "devDependencies": {
     "@babel/core": "*",
@@ -64,6 +67,7 @@
     "ts-jest": "*",
     "ts-node": "*",
     "typescript": "*",
-    "webpack-cli": "*"
+    "webpack-cli": "*",
+    "babel-plugin-react-native-web": "*"
   }
 }
