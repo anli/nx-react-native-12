@@ -1,0 +1,5 @@
+fragment PlaysListItem on Plays {
+  id
+  playedAt
+  gameId
+}

@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import clsx, { ClassValue } from 'clsx';
 import { FC } from 'react';
 import { Pressable, PressableProps, Text } from 'react-native';
 
@@ -11,8 +11,8 @@ type BoxButtonProps = PressableProps & {
 const typeConfigs: Record<
   BoxButtonType,
   {
-    container?: string;
-    text?: string;
+    container?: ClassValue;
+    text?: ClassValue;
   }
 > = {
   solid: {
