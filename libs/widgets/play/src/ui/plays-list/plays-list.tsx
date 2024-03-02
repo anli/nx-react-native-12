@@ -1,3 +1,4 @@
+import { GameThumbnail, useGame } from '@entities/game';
 import { List } from '@shared/ui';
 import { formatDistanceToNow } from 'date-fns';
 import { FC } from 'react';
@@ -24,11 +25,17 @@ export const PlaysList: FC<
   );
 };
 
-const PlaysListItem: FC<PlaysListItemFragment> = ({ id, playedAt }) => {
-  const title = `${id}`;
+const PlaysListItem: FC<PlaysListItemFragment> = ({ id, gameId, playedAt }) => {
+  const { data: gameData } = useGame(gameId);
   const description = `1 players · ${formatDistanceToNow(playedAt, {
     addSuffix: true,
   })}`;
 
-  return <List.Item title={title} description={description} />;
+  return (
+    <List.Item
+      LeftComponent={<GameThumbnail id={gameId} />}
+      title={gameData?.name}
+      description={description}
+    />
+  );
 };

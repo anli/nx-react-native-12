@@ -1,5 +1,9 @@
 import { NavigationContainer } from '@react-navigation/native';
-import { ApolloProvider, AuthenticationProvider } from '@shared/utils';
+import {
+  ApolloProvider,
+  AuthenticationProvider,
+  QueryClientProvider,
+} from '@shared/utils';
 import { remapProps } from 'nativewind';
 import { FlatList } from 'react-native';
 import Config from 'react-native-config';
@@ -20,9 +24,11 @@ export const App = () => {
         clientId={Config.AUTH0_CLIENT_ID}
       >
         <ApolloProvider uri={Config.GRAPHQL_URL}>
-          <NavigationContainer>
-            <RootStack />
-          </NavigationContainer>
+          <QueryClientProvider>
+            <NavigationContainer>
+              <RootStack />
+            </NavigationContainer>
+          </QueryClientProvider>
         </ApolloProvider>
       </AuthenticationProvider>
     </SafeAreaProvider>
