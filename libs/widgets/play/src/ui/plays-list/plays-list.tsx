@@ -3,15 +3,27 @@ import { PlayerThumbnail } from '@entities/player';
 import { Icon, List } from '@shared/ui';
 import { useAuthentication } from '@shared/utils';
 import { formatDistanceToNow } from 'date-fns';
-import { FC } from 'react';
+import { FC, ReactNode, Suspense } from 'react';
 import { FlatList, FlatListProps, ListRenderItem, View } from 'react-native';
+import SkeletonPlaceholder from 'react-native-skeleton-placeholder';
 import { PlaysListItemFragment } from './plays-list-item.fragment.generated';
-import { usePlaysListQuery } from './plays-list.query.generated';
+import { usePlaysListSuspenseQuery } from './plays-list.query.generated';
 
-export const PlaysList: FC<
-  Omit<FlatListProps<PlaysListItemFragment>, 'data' | 'renderItem'>
-> = (rest) => {
-  const { data: { plays: data } = {} } = usePlaysListQuery();
+type PlaysListProps = Omit<
+  FlatListProps<PlaysListItemFragment>,
+  'data' | 'renderItem'
+>;
+
+export const PlaysList: FC<PlaysListProps> = ({ ...rest }) => {
+  return (
+    <Suspense fallback={<PlaceholderPlaysList {...rest} />}>
+      <NativePlaysList {...rest} />
+    </Suspense>
+  );
+};
+
+const NativePlaysList: FC<PlaysListProps> = ({ ...rest }) => {
+  const { data: { plays: data } = {} } = usePlaysListSuspenseQuery();
 
   const renderItem: ListRenderItem<PlaysListItemFragment> = ({ item }) => {
     return <PlaysListItem {...item} />;
@@ -69,6 +81,42 @@ const PlayerThumbnails: FC<Pick<PlaysListItemFragment, 'players'>> = ({
             renderIcon={(props) => <Icon name="TrophyIcon" {...props} />}
           />
         ))}
+    </View>
+  );
+};
+
+const PlaceholderPlaysList: FC<PlaysListProps> = ({ ListHeaderComponent }) => {
+  const items = Array.from({ length: 2 }, (_, index) => index);
+  return (
+    <View className="ios:px-4 android:px-2">
+      {ListHeaderComponent as ReactNode}
+      <SkeletonPlaceholder borderRadius={4}>
+        <SkeletonPlaceholder.Item gap={16}>
+          {items.map((value) => (
+            <SkeletonPlaceholder.Item
+              key={value}
+              flexDirection="row"
+              gap={16}
+              alignItems="center"
+            >
+              <SkeletonPlaceholder.Item width={40} height={40} />
+
+              <SkeletonPlaceholder.Item gap={4} flex={1}>
+                <SkeletonPlaceholder.Item width={40} height={18} />
+                <SkeletonPlaceholder.Item width={120} height={18} />
+              </SkeletonPlaceholder.Item>
+
+              <SkeletonPlaceholder.Item flexDirection="row" gap={8}>
+                <SkeletonPlaceholder.Item
+                  width={32}
+                  height={32}
+                  borderRadius={32}
+                />
+              </SkeletonPlaceholder.Item>
+            </SkeletonPlaceholder.Item>
+          ))}
+        </SkeletonPlaceholder.Item>
+      </SkeletonPlaceholder>
     </View>
   );
 };

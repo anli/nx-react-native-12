@@ -9,12 +9,16 @@ type GameThumbnailProps = {
 export const GameThumbnail: FC<GameThumbnailProps> = ({ id }) => {
   const { data } = useGame(id);
 
-  return (
-    <Image
-      source={{ uri: data?.thumbnailUrl }}
-      height={40}
-      width={40}
-      className="rounded"
-    />
-  );
+  if (data?.thumbnailUrl) {
+    return (
+      <Image
+        source={{ uri: data?.thumbnailUrl }}
+        height={40}
+        width={40}
+        className="rounded"
+      />
+    );
+  }
+
+  return null;
 };
