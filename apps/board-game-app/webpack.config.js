@@ -12,6 +12,14 @@ module.exports = {
         include: [
           path.resolve(appDirectory, 'node_modules/react-native-progress'),
           path.resolve(appDirectory, 'node_modules/react-native-css-interop'),
+          path.resolve(
+            appDirectory,
+            'node_modules/react-native-skeleton-placeholder'
+          ),
+          path.resolve(
+            appDirectory,
+            'node_modules/react-native-linear-gradient'
+          ),
         ],
         use: {
           loader: 'babel-loader',
