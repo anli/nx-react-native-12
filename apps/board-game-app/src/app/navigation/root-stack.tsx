@@ -4,8 +4,15 @@ import {
 } from '@react-navigation/bottom-tabs';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { BottomNavigation, BottomNavigationProps } from '@shared/ui';
-import { useAuthentication } from '@shared/utils';
-import { LoadingPage, PlaysPage, ProfilePage, WelcomePage } from '../../pages';
+import { ApolloProvider, useAuthentication } from '@shared/utils';
+import Config from 'react-native-config';
+import {
+  LoadingPage,
+  PlayCreatePage,
+  PlaysPage,
+  ProfilePage,
+  WelcomePage,
+} from '../../pages';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -65,7 +72,7 @@ const Tabs = () => {
 };
 
 export const RootStack = () => {
-  const { isAuthenticated, isLoading } = useAuthentication();
+  const { isAuthenticated, isLoading, idToken } = useAuthentication();
 
   if (isLoading) {
     return (
@@ -75,13 +82,18 @@ export const RootStack = () => {
     );
   }
 
-  if (isAuthenticated) {
+  if (isAuthenticated && idToken) {
     return (
-      <Stack.Navigator screenOptions={screenOptions} initialRouteName="Tabs">
-        <Stack.Group>
-          <Stack.Screen name="Tabs" component={Tabs} />
-        </Stack.Group>
-      </Stack.Navigator>
+      <ApolloProvider uri={Config.GRAPHQL_URL} token={idToken}>
+        <Stack.Navigator screenOptions={screenOptions} initialRouteName="Tabs">
+          <Stack.Group>
+            <Stack.Screen name="Tabs" component={Tabs} />
+          </Stack.Group>
+          <Stack.Group screenOptions={{ presentation: 'modal' }}>
+            <Stack.Screen name="PlayCreatePage" component={PlayCreatePage} />
+          </Stack.Group>
+        </Stack.Navigator>
+      </ApolloProvider>
     );
   }
 
