@@ -1,0 +1,8 @@
+{
+  "name": "entities-page",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/entities/page/src",
+  "projectType": "library",
+  "tags": ["type:entities"],
+  "targets": {}
+}

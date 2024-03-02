@@ -1,6 +1,7 @@
-import { SafeAreaView, TopNavigation } from '@shared/ui';
+import { useNavigation } from '@react-navigation/native';
+import { Icon, SafeAreaView, TopNavigation } from '@shared/ui';
 import { PlaysList } from '@widgets/play';
-import { View } from 'react-native';
+import { Pressable, View } from 'react-native';
 
 export const PlaysPage = () => {
   return (
@@ -9,11 +10,30 @@ export const PlaysPage = () => {
         <View className="flex-1 py-4 gap-4">
           <View className="flex-1">
             <PlaysList
-              ListHeaderComponent={<TopNavigation.Emphasize title="Plays" />}
+              ListHeaderComponent={
+                <TopNavigation.Emphasize
+                  title="Plays"
+                  RightComponent={<PlayCreateButton />}
+                />
+              }
             />
           </View>
         </View>
       </SafeAreaView>
     </View>
+  );
+};
+
+const PlayCreateButton = (props) => {
+  const { navigate } = useNavigation();
+
+  const handleCreatePlay = () => {
+    navigate('PlayCreatePage');
+  };
+
+  return (
+    <Pressable onPress={handleCreatePlay}>
+      <Icon name="PlusIcon" color="black" size={24} />
+    </Pressable>
   );
 };

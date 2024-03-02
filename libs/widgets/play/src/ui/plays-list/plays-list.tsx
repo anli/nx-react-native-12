@@ -91,7 +91,7 @@ const PlaceholderPlaysList: FC<PlaysListProps> = ({ ListHeaderComponent }) => {
     <View className="ios:px-4 android:px-2">
       {ListHeaderComponent as ReactNode}
       <SkeletonPlaceholder borderRadius={4}>
-        <SkeletonPlaceholder.Item gap={16}>
+        <SkeletonPlaceholder.Item gap={16} paddingVertical={8}>
           {items.map((value) => (
             <SkeletonPlaceholder.Item
               key={value}
