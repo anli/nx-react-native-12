@@ -26,6 +26,7 @@ export type Scalars = {
   Int: { input: number; output: number };
   Float: { input: number; output: number };
   timestamptz: { input: any; output: any };
+  uuid: { input: any; output: any };
 };
 
 /** Boolean expression to compare columns of type "Boolean". All fields are combined with logical 'AND'. */
@@ -126,16 +127,197 @@ export enum OrderBy {
   DescNullsLast = 'DESC_NULLS_LAST',
 }
 
+/** columns and relationships of "players" */
+export type Players = {
+  __typename?: 'Players';
+  createdAt: Scalars['timestamptz']['output'];
+  id: Scalars['uuid']['output'];
+  name?: Maybe<Scalars['String']['output']>;
+  ownerUserId: Scalars['String']['output'];
+  /** An object relationship */
+  owner_user?: Maybe<Users>;
+  /** An array relationship */
+  plays: Array<PlaysPlayers>;
+  /** An aggregate relationship */
+  playsAggregate: PlaysPlayersAggregate;
+  /** An object relationship */
+  user?: Maybe<Users>;
+  userId?: Maybe<Scalars['String']['output']>;
+};
+
+/** columns and relationships of "players" */
+export type PlayersPlaysArgs = {
+  distinctOn?: InputMaybe<Array<PlaysPlayersSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<PlaysPlayersOrderBy>>;
+  where?: InputMaybe<PlaysPlayersBoolExp>;
+};
+
+/** columns and relationships of "players" */
+export type PlayersPlaysAggregateArgs = {
+  distinctOn?: InputMaybe<Array<PlaysPlayersSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<PlaysPlayersOrderBy>>;
+  where?: InputMaybe<PlaysPlayersBoolExp>;
+};
+
+/** Boolean expression to filter rows from the table "players". All fields are combined with a logical 'AND'. */
+export type PlayersBoolExp = {
+  _and?: InputMaybe<Array<PlayersBoolExp>>;
+  _not?: InputMaybe<PlayersBoolExp>;
+  _or?: InputMaybe<Array<PlayersBoolExp>>;
+  createdAt?: InputMaybe<TimestamptzComparisonExp>;
+  id?: InputMaybe<UuidComparisonExp>;
+  name?: InputMaybe<StringComparisonExp>;
+  ownerUserId?: InputMaybe<StringComparisonExp>;
+  owner_user?: InputMaybe<UsersBoolExp>;
+  plays?: InputMaybe<PlaysPlayersBoolExp>;
+  playsAggregate?: InputMaybe<PlaysPlayersAggregateBoolExp>;
+  user?: InputMaybe<UsersBoolExp>;
+  userId?: InputMaybe<StringComparisonExp>;
+};
+
+/** unique or primary key constraints on table "players" */
+export enum PlayersConstraint {
+  /** unique or primary key constraint on columns "id" */
+  PlayersNewIdKey = 'players_new_id_key',
+  /** unique or primary key constraint on columns "id" */
+  PlayersPkey = 'players_pkey',
+}
+
+/** input type for inserting data into table "players" */
+export type PlayersInsertInput = {
+  name?: InputMaybe<Scalars['String']['input']>;
+  plays?: InputMaybe<PlaysPlayersArrRelInsertInput>;
+  userId?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** response of any mutation on the table "players" */
+export type PlayersMutationResponse = {
+  __typename?: 'PlayersMutationResponse';
+  /** number of rows affected by the mutation */
+  affectedRows: Scalars['Int']['output'];
+  /** data from the rows affected by the mutation */
+  returning: Array<Players>;
+};
+
+/** input type for inserting object relation for remote table "players" */
+export type PlayersObjRelInsertInput = {
+  data: PlayersInsertInput;
+  /** upsert condition */
+  onConflict?: InputMaybe<PlayersOnConflict>;
+};
+
+/** on_conflict condition type for table "players" */
+export type PlayersOnConflict = {
+  constraint: PlayersConstraint;
+  updateColumns?: Array<PlayersUpdateColumn>;
+  where?: InputMaybe<PlayersBoolExp>;
+};
+
+/** Ordering options when selecting data from "players". */
+export type PlayersOrderBy = {
+  createdAt?: InputMaybe<OrderBy>;
+  id?: InputMaybe<OrderBy>;
+  name?: InputMaybe<OrderBy>;
+  ownerUserId?: InputMaybe<OrderBy>;
+  owner_user?: InputMaybe<UsersOrderBy>;
+  playsAggregate?: InputMaybe<PlaysPlayersAggregateOrderBy>;
+  user?: InputMaybe<UsersOrderBy>;
+  userId?: InputMaybe<OrderBy>;
+};
+
+/** primary key columns input for table: players */
+export type PlayersPkColumnsInput = {
+  id: Scalars['uuid']['input'];
+};
+
+/** select columns of table "players" */
+export enum PlayersSelectColumn {
+  /** column name */
+  CreatedAt = 'createdAt',
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Name = 'name',
+  /** column name */
+  OwnerUserId = 'ownerUserId',
+  /** column name */
+  UserId = 'userId',
+}
+
+/** input type for updating data in table "players" */
+export type PlayersSetInput = {
+  name?: InputMaybe<Scalars['String']['input']>;
+  userId?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** Streaming cursor of the table "players" */
+export type PlayersStreamCursorInput = {
+  /** Stream column input with initial value */
+  initialValue: PlayersStreamCursorValueInput;
+  /** cursor ordering */
+  ordering?: InputMaybe<CursorOrdering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type PlayersStreamCursorValueInput = {
+  createdAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
+  name?: InputMaybe<Scalars['String']['input']>;
+  ownerUserId?: InputMaybe<Scalars['String']['input']>;
+  userId?: InputMaybe<Scalars['String']['input']>;
+};
+
+/** update columns of table "players" */
+export enum PlayersUpdateColumn {
+  /** column name */
+  Name = 'name',
+  /** column name */
+  UserId = 'userId',
+}
+
+export type PlayersUpdates = {
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<PlayersSetInput>;
+  /** filter the rows which have to be updated */
+  where: PlayersBoolExp;
+};
+
 /** columns and relationships of "plays" */
 export type Plays = {
   __typename?: 'Plays';
   createdAt: Scalars['timestamptz']['output'];
   gameId: Scalars['String']['output'];
-  id: Scalars['Int']['output'];
+  id: Scalars['uuid']['output'];
   ownerUserId?: Maybe<Scalars['String']['output']>;
   /** An object relationship */
   owner_user?: Maybe<Users>;
   playedAt: Scalars['timestamptz']['output'];
+  /** An array relationship */
+  players: Array<PlaysPlayers>;
+  /** An aggregate relationship */
+  playersAggregate: PlaysPlayersAggregate;
+};
+
+/** columns and relationships of "plays" */
+export type PlaysPlayersArgs = {
+  distinctOn?: InputMaybe<Array<PlaysPlayersSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<PlaysPlayersOrderBy>>;
+  where?: InputMaybe<PlaysPlayersBoolExp>;
+};
+
+/** columns and relationships of "plays" */
+export type PlaysPlayersAggregateArgs = {
+  distinctOn?: InputMaybe<Array<PlaysPlayersSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<PlaysPlayersOrderBy>>;
+  where?: InputMaybe<PlaysPlayersBoolExp>;
 };
 
 /** Boolean expression to filter rows from the table "plays". All fields are combined with a logical 'AND'. */
@@ -145,14 +327,18 @@ export type PlaysBoolExp = {
   _or?: InputMaybe<Array<PlaysBoolExp>>;
   createdAt?: InputMaybe<TimestamptzComparisonExp>;
   gameId?: InputMaybe<StringComparisonExp>;
-  id?: InputMaybe<IntComparisonExp>;
+  id?: InputMaybe<UuidComparisonExp>;
   ownerUserId?: InputMaybe<StringComparisonExp>;
   owner_user?: InputMaybe<UsersBoolExp>;
   playedAt?: InputMaybe<TimestamptzComparisonExp>;
+  players?: InputMaybe<PlaysPlayersBoolExp>;
+  playersAggregate?: InputMaybe<PlaysPlayersAggregateBoolExp>;
 };
 
 /** unique or primary key constraints on table "plays" */
 export enum PlaysConstraint {
+  /** unique or primary key constraint on columns "id" */
+  PlaysIdKey = 'plays_id_key',
   /** unique or primary key constraint on columns "id" */
   PlaysPkey = 'plays_pkey',
 }
@@ -161,6 +347,7 @@ export enum PlaysConstraint {
 export type PlaysInsertInput = {
   gameId?: InputMaybe<Scalars['String']['input']>;
   playedAt?: InputMaybe<Scalars['timestamptz']['input']>;
+  players?: InputMaybe<PlaysPlayersArrRelInsertInput>;
 };
 
 /** response of any mutation on the table "plays" */
@@ -170,6 +357,13 @@ export type PlaysMutationResponse = {
   affectedRows: Scalars['Int']['output'];
   /** data from the rows affected by the mutation */
   returning: Array<Plays>;
+};
+
+/** input type for inserting object relation for remote table "plays" */
+export type PlaysObjRelInsertInput = {
+  data: PlaysInsertInput;
+  /** upsert condition */
+  onConflict?: InputMaybe<PlaysOnConflict>;
 };
 
 /** on_conflict condition type for table "plays" */
@@ -187,11 +381,345 @@ export type PlaysOrderBy = {
   ownerUserId?: InputMaybe<OrderBy>;
   owner_user?: InputMaybe<UsersOrderBy>;
   playedAt?: InputMaybe<OrderBy>;
+  playersAggregate?: InputMaybe<PlaysPlayersAggregateOrderBy>;
 };
 
 /** primary key columns input for table: plays */
 export type PlaysPkColumnsInput = {
-  id: Scalars['Int']['input'];
+  id: Scalars['uuid']['input'];
+};
+
+/** columns and relationships of "plays_players" */
+export type PlaysPlayers = {
+  __typename?: 'PlaysPlayers';
+  isWinner: Scalars['Boolean']['output'];
+  ownerUserId: Scalars['String']['output'];
+  /** An object relationship */
+  play?: Maybe<Plays>;
+  playId: Scalars['uuid']['output'];
+  /** An object relationship */
+  player?: Maybe<Players>;
+  playerId: Scalars['uuid']['output'];
+  score: Scalars['Int']['output'];
+};
+
+/** aggregated selection of "plays_players" */
+export type PlaysPlayersAggregate = {
+  __typename?: 'PlaysPlayersAggregate';
+  aggregate?: Maybe<PlaysPlayersAggregateFields>;
+  nodes: Array<PlaysPlayers>;
+};
+
+export type PlaysPlayersAggregateBoolExp = {
+  bool_and?: InputMaybe<PlaysPlayersAggregateBoolExpBool_And>;
+  bool_or?: InputMaybe<PlaysPlayersAggregateBoolExpBool_Or>;
+  count?: InputMaybe<PlaysPlayersAggregateBoolExpCount>;
+};
+
+/** aggregate fields of "plays_players" */
+export type PlaysPlayersAggregateFields = {
+  __typename?: 'PlaysPlayersAggregateFields';
+  avg?: Maybe<PlaysPlayersAvgFields>;
+  count: Scalars['Int']['output'];
+  max?: Maybe<PlaysPlayersMaxFields>;
+  min?: Maybe<PlaysPlayersMinFields>;
+  stddev?: Maybe<PlaysPlayersStddevFields>;
+  stddevPop?: Maybe<PlaysPlayersStddevPopFields>;
+  stddevSamp?: Maybe<PlaysPlayersStddevSampFields>;
+  sum?: Maybe<PlaysPlayersSumFields>;
+  varPop?: Maybe<PlaysPlayersVarPopFields>;
+  varSamp?: Maybe<PlaysPlayersVarSampFields>;
+  variance?: Maybe<PlaysPlayersVarianceFields>;
+};
+
+/** aggregate fields of "plays_players" */
+export type PlaysPlayersAggregateFieldsCountArgs = {
+  columns?: InputMaybe<Array<PlaysPlayersSelectColumn>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+/** order by aggregate values of table "plays_players" */
+export type PlaysPlayersAggregateOrderBy = {
+  avg?: InputMaybe<PlaysPlayersAvgOrderBy>;
+  count?: InputMaybe<OrderBy>;
+  max?: InputMaybe<PlaysPlayersMaxOrderBy>;
+  min?: InputMaybe<PlaysPlayersMinOrderBy>;
+  stddev?: InputMaybe<PlaysPlayersStddevOrderBy>;
+  stddevPop?: InputMaybe<PlaysPlayersStddevPopOrderBy>;
+  stddevSamp?: InputMaybe<PlaysPlayersStddevSampOrderBy>;
+  sum?: InputMaybe<PlaysPlayersSumOrderBy>;
+  varPop?: InputMaybe<PlaysPlayersVarPopOrderBy>;
+  varSamp?: InputMaybe<PlaysPlayersVarSampOrderBy>;
+  variance?: InputMaybe<PlaysPlayersVarianceOrderBy>;
+};
+
+/** input type for inserting array relation for remote table "plays_players" */
+export type PlaysPlayersArrRelInsertInput = {
+  data: Array<PlaysPlayersInsertInput>;
+  /** upsert condition */
+  onConflict?: InputMaybe<PlaysPlayersOnConflict>;
+};
+
+/** aggregate avg on columns */
+export type PlaysPlayersAvgFields = {
+  __typename?: 'PlaysPlayersAvgFields';
+  score?: Maybe<Scalars['Float']['output']>;
+};
+
+/** order by avg() on columns of table "plays_players" */
+export type PlaysPlayersAvgOrderBy = {
+  score?: InputMaybe<OrderBy>;
+};
+
+/** Boolean expression to filter rows from the table "plays_players". All fields are combined with a logical 'AND'. */
+export type PlaysPlayersBoolExp = {
+  _and?: InputMaybe<Array<PlaysPlayersBoolExp>>;
+  _not?: InputMaybe<PlaysPlayersBoolExp>;
+  _or?: InputMaybe<Array<PlaysPlayersBoolExp>>;
+  isWinner?: InputMaybe<BooleanComparisonExp>;
+  ownerUserId?: InputMaybe<StringComparisonExp>;
+  play?: InputMaybe<PlaysBoolExp>;
+  playId?: InputMaybe<UuidComparisonExp>;
+  player?: InputMaybe<PlayersBoolExp>;
+  playerId?: InputMaybe<UuidComparisonExp>;
+  score?: InputMaybe<IntComparisonExp>;
+};
+
+/** unique or primary key constraints on table "plays_players" */
+export enum PlaysPlayersConstraint {
+  /** unique or primary key constraint on columns "play_id", "player_id" */
+  PlaysPlayersPkey = 'plays_players_pkey',
+}
+
+/** input type for incrementing numeric columns in table "plays_players" */
+export type PlaysPlayersIncInput = {
+  score?: InputMaybe<Scalars['Int']['input']>;
+};
+
+/** input type for inserting data into table "plays_players" */
+export type PlaysPlayersInsertInput = {
+  isWinner?: InputMaybe<Scalars['Boolean']['input']>;
+  play?: InputMaybe<PlaysObjRelInsertInput>;
+  playId?: InputMaybe<Scalars['uuid']['input']>;
+  player?: InputMaybe<PlayersObjRelInsertInput>;
+  playerId?: InputMaybe<Scalars['uuid']['input']>;
+  score?: InputMaybe<Scalars['Int']['input']>;
+};
+
+/** aggregate max on columns */
+export type PlaysPlayersMaxFields = {
+  __typename?: 'PlaysPlayersMaxFields';
+  ownerUserId?: Maybe<Scalars['String']['output']>;
+  playId?: Maybe<Scalars['uuid']['output']>;
+  playerId?: Maybe<Scalars['uuid']['output']>;
+  score?: Maybe<Scalars['Int']['output']>;
+};
+
+/** order by max() on columns of table "plays_players" */
+export type PlaysPlayersMaxOrderBy = {
+  ownerUserId?: InputMaybe<OrderBy>;
+  playId?: InputMaybe<OrderBy>;
+  playerId?: InputMaybe<OrderBy>;
+  score?: InputMaybe<OrderBy>;
+};
+
+/** aggregate min on columns */
+export type PlaysPlayersMinFields = {
+  __typename?: 'PlaysPlayersMinFields';
+  ownerUserId?: Maybe<Scalars['String']['output']>;
+  playId?: Maybe<Scalars['uuid']['output']>;
+  playerId?: Maybe<Scalars['uuid']['output']>;
+  score?: Maybe<Scalars['Int']['output']>;
+};
+
+/** order by min() on columns of table "plays_players" */
+export type PlaysPlayersMinOrderBy = {
+  ownerUserId?: InputMaybe<OrderBy>;
+  playId?: InputMaybe<OrderBy>;
+  playerId?: InputMaybe<OrderBy>;
+  score?: InputMaybe<OrderBy>;
+};
+
+/** response of any mutation on the table "plays_players" */
+export type PlaysPlayersMutationResponse = {
+  __typename?: 'PlaysPlayersMutationResponse';
+  /** number of rows affected by the mutation */
+  affectedRows: Scalars['Int']['output'];
+  /** data from the rows affected by the mutation */
+  returning: Array<PlaysPlayers>;
+};
+
+/** on_conflict condition type for table "plays_players" */
+export type PlaysPlayersOnConflict = {
+  constraint: PlaysPlayersConstraint;
+  updateColumns?: Array<PlaysPlayersUpdateColumn>;
+  where?: InputMaybe<PlaysPlayersBoolExp>;
+};
+
+/** Ordering options when selecting data from "plays_players". */
+export type PlaysPlayersOrderBy = {
+  isWinner?: InputMaybe<OrderBy>;
+  ownerUserId?: InputMaybe<OrderBy>;
+  play?: InputMaybe<PlaysOrderBy>;
+  playId?: InputMaybe<OrderBy>;
+  player?: InputMaybe<PlayersOrderBy>;
+  playerId?: InputMaybe<OrderBy>;
+  score?: InputMaybe<OrderBy>;
+};
+
+/** primary key columns input for table: plays_players */
+export type PlaysPlayersPkColumnsInput = {
+  playId: Scalars['uuid']['input'];
+  playerId: Scalars['uuid']['input'];
+};
+
+/** select columns of table "plays_players" */
+export enum PlaysPlayersSelectColumn {
+  /** column name */
+  IsWinner = 'isWinner',
+  /** column name */
+  OwnerUserId = 'ownerUserId',
+  /** column name */
+  PlayId = 'playId',
+  /** column name */
+  PlayerId = 'playerId',
+  /** column name */
+  Score = 'score',
+}
+
+/** select "playsPlayersAggregateBoolExpBool_andArgumentsColumns" columns of table "plays_players" */
+export enum PlaysPlayersSelectColumnPlaysPlayersAggregateBoolExpBool_AndArgumentsColumns {
+  /** column name */
+  IsWinner = 'isWinner',
+}
+
+/** select "playsPlayersAggregateBoolExpBool_orArgumentsColumns" columns of table "plays_players" */
+export enum PlaysPlayersSelectColumnPlaysPlayersAggregateBoolExpBool_OrArgumentsColumns {
+  /** column name */
+  IsWinner = 'isWinner',
+}
+
+/** input type for updating data in table "plays_players" */
+export type PlaysPlayersSetInput = {
+  isWinner?: InputMaybe<Scalars['Boolean']['input']>;
+  playId?: InputMaybe<Scalars['uuid']['input']>;
+  playerId?: InputMaybe<Scalars['uuid']['input']>;
+  score?: InputMaybe<Scalars['Int']['input']>;
+};
+
+/** aggregate stddev on columns */
+export type PlaysPlayersStddevFields = {
+  __typename?: 'PlaysPlayersStddevFields';
+  score?: Maybe<Scalars['Float']['output']>;
+};
+
+/** order by stddev() on columns of table "plays_players" */
+export type PlaysPlayersStddevOrderBy = {
+  score?: InputMaybe<OrderBy>;
+};
+
+/** aggregate stddevPop on columns */
+export type PlaysPlayersStddevPopFields = {
+  __typename?: 'PlaysPlayersStddevPopFields';
+  score?: Maybe<Scalars['Float']['output']>;
+};
+
+/** order by stddevPop() on columns of table "plays_players" */
+export type PlaysPlayersStddevPopOrderBy = {
+  score?: InputMaybe<OrderBy>;
+};
+
+/** aggregate stddevSamp on columns */
+export type PlaysPlayersStddevSampFields = {
+  __typename?: 'PlaysPlayersStddevSampFields';
+  score?: Maybe<Scalars['Float']['output']>;
+};
+
+/** order by stddevSamp() on columns of table "plays_players" */
+export type PlaysPlayersStddevSampOrderBy = {
+  score?: InputMaybe<OrderBy>;
+};
+
+/** Streaming cursor of the table "plays_players" */
+export type PlaysPlayersStreamCursorInput = {
+  /** Stream column input with initial value */
+  initialValue: PlaysPlayersStreamCursorValueInput;
+  /** cursor ordering */
+  ordering?: InputMaybe<CursorOrdering>;
+};
+
+/** Initial value of the column from where the streaming should start */
+export type PlaysPlayersStreamCursorValueInput = {
+  isWinner?: InputMaybe<Scalars['Boolean']['input']>;
+  ownerUserId?: InputMaybe<Scalars['String']['input']>;
+  playId?: InputMaybe<Scalars['uuid']['input']>;
+  playerId?: InputMaybe<Scalars['uuid']['input']>;
+  score?: InputMaybe<Scalars['Int']['input']>;
+};
+
+/** aggregate sum on columns */
+export type PlaysPlayersSumFields = {
+  __typename?: 'PlaysPlayersSumFields';
+  score?: Maybe<Scalars['Int']['output']>;
+};
+
+/** order by sum() on columns of table "plays_players" */
+export type PlaysPlayersSumOrderBy = {
+  score?: InputMaybe<OrderBy>;
+};
+
+/** update columns of table "plays_players" */
+export enum PlaysPlayersUpdateColumn {
+  /** column name */
+  IsWinner = 'isWinner',
+  /** column name */
+  PlayId = 'playId',
+  /** column name */
+  PlayerId = 'playerId',
+  /** column name */
+  Score = 'score',
+}
+
+export type PlaysPlayersUpdates = {
+  /** increments the numeric columns with given value of the filtered values */
+  _inc?: InputMaybe<PlaysPlayersIncInput>;
+  /** sets the columns of the filtered rows to the given values */
+  _set?: InputMaybe<PlaysPlayersSetInput>;
+  /** filter the rows which have to be updated */
+  where: PlaysPlayersBoolExp;
+};
+
+/** aggregate varPop on columns */
+export type PlaysPlayersVarPopFields = {
+  __typename?: 'PlaysPlayersVarPopFields';
+  score?: Maybe<Scalars['Float']['output']>;
+};
+
+/** order by varPop() on columns of table "plays_players" */
+export type PlaysPlayersVarPopOrderBy = {
+  score?: InputMaybe<OrderBy>;
+};
+
+/** aggregate varSamp on columns */
+export type PlaysPlayersVarSampFields = {
+  __typename?: 'PlaysPlayersVarSampFields';
+  score?: Maybe<Scalars['Float']['output']>;
+};
+
+/** order by varSamp() on columns of table "plays_players" */
+export type PlaysPlayersVarSampOrderBy = {
+  score?: InputMaybe<OrderBy>;
+};
+
+/** aggregate variance on columns */
+export type PlaysPlayersVarianceFields = {
+  __typename?: 'PlaysPlayersVarianceFields';
+  score?: Maybe<Scalars['Float']['output']>;
+};
+
+/** order by variance() on columns of table "plays_players" */
+export type PlaysPlayersVarianceOrderBy = {
+  score?: InputMaybe<OrderBy>;
 };
 
 /** select columns of table "plays" */
@@ -226,7 +754,7 @@ export type PlaysStreamCursorInput = {
 export type PlaysStreamCursorValueInput = {
   createdAt?: InputMaybe<Scalars['timestamptz']['input']>;
   gameId?: InputMaybe<Scalars['String']['input']>;
-  id?: InputMaybe<Scalars['Int']['input']>;
+  id?: InputMaybe<Scalars['uuid']['input']>;
   ownerUserId?: InputMaybe<Scalars['String']['input']>;
   playedAt?: InputMaybe<Scalars['timestamptz']['input']>;
 };
@@ -290,129 +818,6 @@ export type TimestamptzComparisonExp = {
   _lte?: InputMaybe<Scalars['timestamptz']['input']>;
   _neq?: InputMaybe<Scalars['timestamptz']['input']>;
   _nin?: InputMaybe<Array<Scalars['timestamptz']['input']>>;
-};
-
-/** columns and relationships of "todos" */
-export type Todos = {
-  __typename?: 'Todos';
-  createdAt: Scalars['timestamptz']['output'];
-  id: Scalars['Int']['output'];
-  isCompleted: Scalars['Boolean']['output'];
-  isPublic: Scalars['Boolean']['output'];
-  title: Scalars['String']['output'];
-  /** An object relationship */
-  user: Users;
-  userId: Scalars['String']['output'];
-};
-
-/** Boolean expression to filter rows from the table "todos". All fields are combined with a logical 'AND'. */
-export type TodosBoolExp = {
-  _and?: InputMaybe<Array<TodosBoolExp>>;
-  _not?: InputMaybe<TodosBoolExp>;
-  _or?: InputMaybe<Array<TodosBoolExp>>;
-  createdAt?: InputMaybe<TimestamptzComparisonExp>;
-  id?: InputMaybe<IntComparisonExp>;
-  isCompleted?: InputMaybe<BooleanComparisonExp>;
-  isPublic?: InputMaybe<BooleanComparisonExp>;
-  title?: InputMaybe<StringComparisonExp>;
-  user?: InputMaybe<UsersBoolExp>;
-  userId?: InputMaybe<StringComparisonExp>;
-};
-
-/** unique or primary key constraints on table "todos" */
-export enum TodosConstraint {
-  /** unique or primary key constraint on columns "id" */
-  TodosPkey = 'todos_pkey',
-}
-
-/** input type for inserting data into table "todos" */
-export type TodosInsertInput = {
-  isPublic?: InputMaybe<Scalars['Boolean']['input']>;
-  title?: InputMaybe<Scalars['String']['input']>;
-};
-
-/** response of any mutation on the table "todos" */
-export type TodosMutationResponse = {
-  __typename?: 'TodosMutationResponse';
-  /** number of rows affected by the mutation */
-  affectedRows: Scalars['Int']['output'];
-  /** data from the rows affected by the mutation */
-  returning: Array<Todos>;
-};
-
-/** on_conflict condition type for table "todos" */
-export type TodosOnConflict = {
-  constraint: TodosConstraint;
-  updateColumns?: Array<TodosUpdateColumn>;
-  where?: InputMaybe<TodosBoolExp>;
-};
-
-/** Ordering options when selecting data from "todos". */
-export type TodosOrderBy = {
-  createdAt?: InputMaybe<OrderBy>;
-  id?: InputMaybe<OrderBy>;
-  isCompleted?: InputMaybe<OrderBy>;
-  isPublic?: InputMaybe<OrderBy>;
-  title?: InputMaybe<OrderBy>;
-  user?: InputMaybe<UsersOrderBy>;
-  userId?: InputMaybe<OrderBy>;
-};
-
-/** primary key columns input for table: todos */
-export type TodosPkColumnsInput = {
-  id: Scalars['Int']['input'];
-};
-
-/** select columns of table "todos" */
-export enum TodosSelectColumn {
-  /** column name */
-  CreatedAt = 'createdAt',
-  /** column name */
-  Id = 'id',
-  /** column name */
-  IsCompleted = 'isCompleted',
-  /** column name */
-  IsPublic = 'isPublic',
-  /** column name */
-  Title = 'title',
-  /** column name */
-  UserId = 'userId',
-}
-
-/** input type for updating data in table "todos" */
-export type TodosSetInput = {
-  isCompleted?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
-/** Streaming cursor of the table "todos" */
-export type TodosStreamCursorInput = {
-  /** Stream column input with initial value */
-  initialValue: TodosStreamCursorValueInput;
-  /** cursor ordering */
-  ordering?: InputMaybe<CursorOrdering>;
-};
-
-/** Initial value of the column from where the streaming should start */
-export type TodosStreamCursorValueInput = {
-  createdAt?: InputMaybe<Scalars['timestamptz']['input']>;
-  id?: InputMaybe<Scalars['Int']['input']>;
-  isCompleted?: InputMaybe<Scalars['Boolean']['input']>;
-  isPublic?: InputMaybe<Scalars['Boolean']['input']>;
-  title?: InputMaybe<Scalars['String']['input']>;
-  userId?: InputMaybe<Scalars['String']['input']>;
-};
-
-/** update columns of table "todos" */
-export enum TodosUpdateColumn {
-  /** column name */
-  IsCompleted = 'isCompleted',
-}
-
-export type TodosUpdates = {
-  /** sets the columns of the filtered rows to the given values */
-  _set?: InputMaybe<TodosSetInput>;
-  /** filter the rows which have to be updated */
-  where: TodosBoolExp;
 };
 
 /** columns and relationships of "users" */
@@ -485,37 +890,64 @@ export type UsersUpdates = {
   where: UsersBoolExp;
 };
 
+/** Boolean expression to compare columns of type "uuid". All fields are combined with logical 'AND'. */
+export type UuidComparisonExp = {
+  _eq?: InputMaybe<Scalars['uuid']['input']>;
+  _gt?: InputMaybe<Scalars['uuid']['input']>;
+  _gte?: InputMaybe<Scalars['uuid']['input']>;
+  _in?: InputMaybe<Array<Scalars['uuid']['input']>>;
+  _isNull?: InputMaybe<Scalars['Boolean']['input']>;
+  _lt?: InputMaybe<Scalars['uuid']['input']>;
+  _lte?: InputMaybe<Scalars['uuid']['input']>;
+  _neq?: InputMaybe<Scalars['uuid']['input']>;
+  _nin?: InputMaybe<Array<Scalars['uuid']['input']>>;
+};
+
 /** mutation root */
 export type Mutation_Root = {
   __typename?: 'mutation_root';
+  /** delete data from the table: "players" */
+  deletePlayers?: Maybe<PlayersMutationResponse>;
+  /** delete single row from the table: "players" */
+  deletePlayersByPk?: Maybe<Players>;
   /** delete data from the table: "plays" */
   deletePlays?: Maybe<PlaysMutationResponse>;
   /** delete single row from the table: "plays" */
   deletePlaysByPk?: Maybe<Plays>;
-  /** delete data from the table: "todos" */
-  deleteTodos?: Maybe<TodosMutationResponse>;
-  /** delete single row from the table: "todos" */
-  deleteTodosByPk?: Maybe<Todos>;
+  /** delete data from the table: "plays_players" */
+  deletePlaysPlayers?: Maybe<PlaysPlayersMutationResponse>;
+  /** delete single row from the table: "plays_players" */
+  deletePlaysPlayersByPk?: Maybe<PlaysPlayers>;
+  /** insert data into the table: "players" */
+  insertPlayers?: Maybe<PlayersMutationResponse>;
+  /** insert a single row into the table: "players" */
+  insertPlayersOne?: Maybe<Players>;
   /** insert data into the table: "plays" */
   insertPlays?: Maybe<PlaysMutationResponse>;
   /** insert a single row into the table: "plays" */
   insertPlaysOne?: Maybe<Plays>;
-  /** insert data into the table: "todos" */
-  insertTodos?: Maybe<TodosMutationResponse>;
-  /** insert a single row into the table: "todos" */
-  insertTodosOne?: Maybe<Todos>;
+  /** insert data into the table: "plays_players" */
+  insertPlaysPlayers?: Maybe<PlaysPlayersMutationResponse>;
+  /** insert a single row into the table: "plays_players" */
+  insertPlaysPlayersOne?: Maybe<PlaysPlayers>;
+  /** update data of the table: "players" */
+  updatePlayers?: Maybe<PlayersMutationResponse>;
+  /** update single row of the table: "players" */
+  updatePlayersByPk?: Maybe<Players>;
+  /** update multiples rows of table: "players" */
+  updatePlayersMany?: Maybe<Array<Maybe<PlayersMutationResponse>>>;
   /** update data of the table: "plays" */
   updatePlays?: Maybe<PlaysMutationResponse>;
   /** update single row of the table: "plays" */
   updatePlaysByPk?: Maybe<Plays>;
   /** update multiples rows of table: "plays" */
   updatePlaysMany?: Maybe<Array<Maybe<PlaysMutationResponse>>>;
-  /** update data of the table: "todos" */
-  updateTodos?: Maybe<TodosMutationResponse>;
-  /** update single row of the table: "todos" */
-  updateTodosByPk?: Maybe<Todos>;
-  /** update multiples rows of table: "todos" */
-  updateTodosMany?: Maybe<Array<Maybe<TodosMutationResponse>>>;
+  /** update data of the table: "plays_players" */
+  updatePlaysPlayers?: Maybe<PlaysPlayersMutationResponse>;
+  /** update single row of the table: "plays_players" */
+  updatePlaysPlayersByPk?: Maybe<PlaysPlayers>;
+  /** update multiples rows of table: "plays_players" */
+  updatePlaysPlayersMany?: Maybe<Array<Maybe<PlaysPlayersMutationResponse>>>;
   /** update data of the table: "users" */
   updateUsers?: Maybe<UsersMutationResponse>;
   /** update single row of the table: "users" */
@@ -525,23 +957,46 @@ export type Mutation_Root = {
 };
 
 /** mutation root */
+export type Mutation_RootDeletePlayersArgs = {
+  where: PlayersBoolExp;
+};
+
+/** mutation root */
+export type Mutation_RootDeletePlayersByPkArgs = {
+  id: Scalars['uuid']['input'];
+};
+
+/** mutation root */
 export type Mutation_RootDeletePlaysArgs = {
   where: PlaysBoolExp;
 };
 
 /** mutation root */
 export type Mutation_RootDeletePlaysByPkArgs = {
-  id: Scalars['Int']['input'];
+  id: Scalars['uuid']['input'];
 };
 
 /** mutation root */
-export type Mutation_RootDeleteTodosArgs = {
-  where: TodosBoolExp;
+export type Mutation_RootDeletePlaysPlayersArgs = {
+  where: PlaysPlayersBoolExp;
 };
 
 /** mutation root */
-export type Mutation_RootDeleteTodosByPkArgs = {
-  id: Scalars['Int']['input'];
+export type Mutation_RootDeletePlaysPlayersByPkArgs = {
+  playId: Scalars['uuid']['input'];
+  playerId: Scalars['uuid']['input'];
+};
+
+/** mutation root */
+export type Mutation_RootInsertPlayersArgs = {
+  objects: Array<PlayersInsertInput>;
+  onConflict?: InputMaybe<PlayersOnConflict>;
+};
+
+/** mutation root */
+export type Mutation_RootInsertPlayersOneArgs = {
+  object: PlayersInsertInput;
+  onConflict?: InputMaybe<PlayersOnConflict>;
 };
 
 /** mutation root */
@@ -557,15 +1012,32 @@ export type Mutation_RootInsertPlaysOneArgs = {
 };
 
 /** mutation root */
-export type Mutation_RootInsertTodosArgs = {
-  objects: Array<TodosInsertInput>;
-  onConflict?: InputMaybe<TodosOnConflict>;
+export type Mutation_RootInsertPlaysPlayersArgs = {
+  objects: Array<PlaysPlayersInsertInput>;
+  onConflict?: InputMaybe<PlaysPlayersOnConflict>;
 };
 
 /** mutation root */
-export type Mutation_RootInsertTodosOneArgs = {
-  object: TodosInsertInput;
-  onConflict?: InputMaybe<TodosOnConflict>;
+export type Mutation_RootInsertPlaysPlayersOneArgs = {
+  object: PlaysPlayersInsertInput;
+  onConflict?: InputMaybe<PlaysPlayersOnConflict>;
+};
+
+/** mutation root */
+export type Mutation_RootUpdatePlayersArgs = {
+  _set?: InputMaybe<PlayersSetInput>;
+  where: PlayersBoolExp;
+};
+
+/** mutation root */
+export type Mutation_RootUpdatePlayersByPkArgs = {
+  _set?: InputMaybe<PlayersSetInput>;
+  pkColumns: PlayersPkColumnsInput;
+};
+
+/** mutation root */
+export type Mutation_RootUpdatePlayersManyArgs = {
+  updates: Array<PlayersUpdates>;
 };
 
 /** mutation root */
@@ -586,20 +1058,22 @@ export type Mutation_RootUpdatePlaysManyArgs = {
 };
 
 /** mutation root */
-export type Mutation_RootUpdateTodosArgs = {
-  _set?: InputMaybe<TodosSetInput>;
-  where: TodosBoolExp;
+export type Mutation_RootUpdatePlaysPlayersArgs = {
+  _inc?: InputMaybe<PlaysPlayersIncInput>;
+  _set?: InputMaybe<PlaysPlayersSetInput>;
+  where: PlaysPlayersBoolExp;
 };
 
 /** mutation root */
-export type Mutation_RootUpdateTodosByPkArgs = {
-  _set?: InputMaybe<TodosSetInput>;
-  pkColumns: TodosPkColumnsInput;
+export type Mutation_RootUpdatePlaysPlayersByPkArgs = {
+  _inc?: InputMaybe<PlaysPlayersIncInput>;
+  _set?: InputMaybe<PlaysPlayersSetInput>;
+  pkColumns: PlaysPlayersPkColumnsInput;
 };
 
 /** mutation root */
-export type Mutation_RootUpdateTodosManyArgs = {
-  updates: Array<TodosUpdates>;
+export type Mutation_RootUpdatePlaysPlayersManyArgs = {
+  updates: Array<PlaysPlayersUpdates>;
 };
 
 /** mutation root */
@@ -619,18 +1093,45 @@ export type Mutation_RootUpdateUsersManyArgs = {
   updates: Array<UsersUpdates>;
 };
 
+export type PlaysPlayersAggregateBoolExpBool_And = {
+  arguments: PlaysPlayersSelectColumnPlaysPlayersAggregateBoolExpBool_AndArgumentsColumns;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+  filter?: InputMaybe<PlaysPlayersBoolExp>;
+  predicate: BooleanComparisonExp;
+};
+
+export type PlaysPlayersAggregateBoolExpBool_Or = {
+  arguments: PlaysPlayersSelectColumnPlaysPlayersAggregateBoolExpBool_OrArgumentsColumns;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+  filter?: InputMaybe<PlaysPlayersBoolExp>;
+  predicate: BooleanComparisonExp;
+};
+
+export type PlaysPlayersAggregateBoolExpCount = {
+  arguments?: InputMaybe<Array<PlaysPlayersSelectColumn>>;
+  distinct?: InputMaybe<Scalars['Boolean']['input']>;
+  filter?: InputMaybe<PlaysPlayersBoolExp>;
+  predicate: IntComparisonExp;
+};
+
 export type Query_Root = {
   __typename?: 'query_root';
   /** fetch data from the table: "online_users" */
   onlineUsers: Array<OnlineUsers>;
+  /** fetch data from the table: "players" */
+  players: Array<Players>;
+  /** fetch data from the table: "players" using primary key columns */
+  playersByPk?: Maybe<Players>;
   /** fetch data from the table: "plays" */
   plays: Array<Plays>;
   /** fetch data from the table: "plays" using primary key columns */
   playsByPk?: Maybe<Plays>;
-  /** fetch data from the table: "todos" */
-  todos: Array<Todos>;
-  /** fetch data from the table: "todos" using primary key columns */
-  todosByPk?: Maybe<Todos>;
+  /** fetch data from the table: "plays_players" */
+  playsPlayers: Array<PlaysPlayers>;
+  /** fetch aggregated fields from the table: "plays_players" */
+  playsPlayersAggregate: PlaysPlayersAggregate;
+  /** fetch data from the table: "plays_players" using primary key columns */
+  playsPlayersByPk?: Maybe<PlaysPlayers>;
   /** fetch data from the table: "users" */
   users: Array<Users>;
   /** fetch data from the table: "users" using primary key columns */
@@ -645,6 +1146,18 @@ export type Query_RootOnlineUsersArgs = {
   where?: InputMaybe<OnlineUsersBoolExp>;
 };
 
+export type Query_RootPlayersArgs = {
+  distinctOn?: InputMaybe<Array<PlayersSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<PlayersOrderBy>>;
+  where?: InputMaybe<PlayersBoolExp>;
+};
+
+export type Query_RootPlayersByPkArgs = {
+  id: Scalars['uuid']['input'];
+};
+
 export type Query_RootPlaysArgs = {
   distinctOn?: InputMaybe<Array<PlaysSelectColumn>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -654,19 +1167,28 @@ export type Query_RootPlaysArgs = {
 };
 
 export type Query_RootPlaysByPkArgs = {
-  id: Scalars['Int']['input'];
+  id: Scalars['uuid']['input'];
 };
 
-export type Query_RootTodosArgs = {
-  distinctOn?: InputMaybe<Array<TodosSelectColumn>>;
+export type Query_RootPlaysPlayersArgs = {
+  distinctOn?: InputMaybe<Array<PlaysPlayersSelectColumn>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
   offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<TodosOrderBy>>;
-  where?: InputMaybe<TodosBoolExp>;
+  orderBy?: InputMaybe<Array<PlaysPlayersOrderBy>>;
+  where?: InputMaybe<PlaysPlayersBoolExp>;
 };
 
-export type Query_RootTodosByPkArgs = {
-  id: Scalars['Int']['input'];
+export type Query_RootPlaysPlayersAggregateArgs = {
+  distinctOn?: InputMaybe<Array<PlaysPlayersSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<PlaysPlayersOrderBy>>;
+  where?: InputMaybe<PlaysPlayersBoolExp>;
+};
+
+export type Query_RootPlaysPlayersByPkArgs = {
+  playId: Scalars['uuid']['input'];
+  playerId: Scalars['uuid']['input'];
 };
 
 export type Query_RootUsersArgs = {
@@ -687,18 +1209,26 @@ export type Subscription_Root = {
   onlineUsers: Array<OnlineUsers>;
   /** fetch data from the table in a streaming manner: "online_users" */
   onlineUsersStream: Array<OnlineUsers>;
+  /** fetch data from the table: "players" */
+  players: Array<Players>;
+  /** fetch data from the table: "players" using primary key columns */
+  playersByPk?: Maybe<Players>;
+  /** fetch data from the table in a streaming manner: "players" */
+  playersStream: Array<Players>;
   /** fetch data from the table: "plays" */
   plays: Array<Plays>;
   /** fetch data from the table: "plays" using primary key columns */
   playsByPk?: Maybe<Plays>;
+  /** fetch data from the table: "plays_players" */
+  playsPlayers: Array<PlaysPlayers>;
+  /** fetch aggregated fields from the table: "plays_players" */
+  playsPlayersAggregate: PlaysPlayersAggregate;
+  /** fetch data from the table: "plays_players" using primary key columns */
+  playsPlayersByPk?: Maybe<PlaysPlayers>;
+  /** fetch data from the table in a streaming manner: "plays_players" */
+  playsPlayersStream: Array<PlaysPlayers>;
   /** fetch data from the table in a streaming manner: "plays" */
   playsStream: Array<Plays>;
-  /** fetch data from the table: "todos" */
-  todos: Array<Todos>;
-  /** fetch data from the table: "todos" using primary key columns */
-  todosByPk?: Maybe<Todos>;
-  /** fetch data from the table in a streaming manner: "todos" */
-  todosStream: Array<Todos>;
   /** fetch data from the table: "users" */
   users: Array<Users>;
   /** fetch data from the table: "users" using primary key columns */
@@ -721,6 +1251,24 @@ export type Subscription_RootOnlineUsersStreamArgs = {
   where?: InputMaybe<OnlineUsersBoolExp>;
 };
 
+export type Subscription_RootPlayersArgs = {
+  distinctOn?: InputMaybe<Array<PlayersSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<PlayersOrderBy>>;
+  where?: InputMaybe<PlayersBoolExp>;
+};
+
+export type Subscription_RootPlayersByPkArgs = {
+  id: Scalars['uuid']['input'];
+};
+
+export type Subscription_RootPlayersStreamArgs = {
+  batchSize: Scalars['Int']['input'];
+  cursor: Array<InputMaybe<PlayersStreamCursorInput>>;
+  where?: InputMaybe<PlayersBoolExp>;
+};
+
 export type Subscription_RootPlaysArgs = {
   distinctOn?: InputMaybe<Array<PlaysSelectColumn>>;
   limit?: InputMaybe<Scalars['Int']['input']>;
@@ -730,31 +1278,40 @@ export type Subscription_RootPlaysArgs = {
 };
 
 export type Subscription_RootPlaysByPkArgs = {
-  id: Scalars['Int']['input'];
+  id: Scalars['uuid']['input'];
+};
+
+export type Subscription_RootPlaysPlayersArgs = {
+  distinctOn?: InputMaybe<Array<PlaysPlayersSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<PlaysPlayersOrderBy>>;
+  where?: InputMaybe<PlaysPlayersBoolExp>;
+};
+
+export type Subscription_RootPlaysPlayersAggregateArgs = {
+  distinctOn?: InputMaybe<Array<PlaysPlayersSelectColumn>>;
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  offset?: InputMaybe<Scalars['Int']['input']>;
+  orderBy?: InputMaybe<Array<PlaysPlayersOrderBy>>;
+  where?: InputMaybe<PlaysPlayersBoolExp>;
+};
+
+export type Subscription_RootPlaysPlayersByPkArgs = {
+  playId: Scalars['uuid']['input'];
+  playerId: Scalars['uuid']['input'];
+};
+
+export type Subscription_RootPlaysPlayersStreamArgs = {
+  batchSize: Scalars['Int']['input'];
+  cursor: Array<InputMaybe<PlaysPlayersStreamCursorInput>>;
+  where?: InputMaybe<PlaysPlayersBoolExp>;
 };
 
 export type Subscription_RootPlaysStreamArgs = {
   batchSize: Scalars['Int']['input'];
   cursor: Array<InputMaybe<PlaysStreamCursorInput>>;
   where?: InputMaybe<PlaysBoolExp>;
-};
-
-export type Subscription_RootTodosArgs = {
-  distinctOn?: InputMaybe<Array<TodosSelectColumn>>;
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  offset?: InputMaybe<Scalars['Int']['input']>;
-  orderBy?: InputMaybe<Array<TodosOrderBy>>;
-  where?: InputMaybe<TodosBoolExp>;
-};
-
-export type Subscription_RootTodosByPkArgs = {
-  id: Scalars['Int']['input'];
-};
-
-export type Subscription_RootTodosStreamArgs = {
-  batchSize: Scalars['Int']['input'];
-  cursor: Array<InputMaybe<TodosStreamCursorInput>>;
-  where?: InputMaybe<TodosBoolExp>;
 };
 
 export type Subscription_RootUsersArgs = {

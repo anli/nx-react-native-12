@@ -1,0 +1,8 @@
+{
+  "name": "entities-player",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/entities/player/src",
+  "projectType": "library",
+  "tags": ["type:entities"],
+  "targets": {}
+}

@@ -1,0 +1,5 @@
+query PlayerThumbnail($id: uuid!) {
+  playersByPk(id: $id) {
+    ...PlayerThumbnail
+  }
+}

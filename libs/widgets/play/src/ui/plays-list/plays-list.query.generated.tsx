@@ -10,9 +10,21 @@ export type PlaysListQuery = {
   __typename?: 'query_root';
   plays: Array<{
     __typename?: 'Plays';
-    id: number;
+    id: any;
     playedAt: any;
     gameId: string;
+    players: Array<{
+      __typename?: 'PlaysPlayers';
+      playerId: any;
+      isWinner: boolean;
+    }>;
+    playersAggregate: {
+      __typename?: 'PlaysPlayersAggregate';
+      aggregate?: {
+        __typename?: 'PlaysPlayersAggregateFields';
+        count: number;
+      } | null;
+    };
   }>;
 };
 

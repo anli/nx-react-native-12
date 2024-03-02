@@ -1,0 +1,3 @@
+fragment PlayerThumbnail on Players {
+  name
+}
