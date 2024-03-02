@@ -2,4 +2,13 @@ fragment PlaysListItem on Plays {
   id
   playedAt
   gameId
+  players {
+    playerId
+    isWinner
+  }
+  playersAggregate {
+    aggregate {
+      count
+    }
+  }
 }

@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@entities/game": ["libs/entities/game/src/index.ts"],
+      "@entities/player": ["libs/entities/player/src/index.ts"],
       "@entities/user": ["libs/entities/user/src/index.ts"],
       "@features/authenticate": ["libs/features/authenticate/src/index.ts"],
       "@shared/api": ["libs/shared/api/src/index.ts"],

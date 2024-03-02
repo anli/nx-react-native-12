@@ -89,7 +89,7 @@
     "pod-install": "nx pod-install",
     "affected:lint": "nx affected:lint",
     "format:write": "nx format:write",
-    "generate": "nx run shared-api:generate",
+    "generate": "nx run shared-api:generate && yarn format:write",
     "affected:build": "nx affected:build"
   }
 }
