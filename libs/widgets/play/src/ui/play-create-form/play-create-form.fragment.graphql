@@ -1,0 +1,5 @@
+fragment PlayCreateForm on Players {
+  id
+  name
+  userId
+}

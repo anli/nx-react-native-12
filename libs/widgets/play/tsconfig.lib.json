@@ -11,5 +11,8 @@
     "test-setup.ts"
   ],
   "include": ["src/**/*.js", "src/**/*.jsx", "src/**/*.ts", "src/**/*.tsx"],
-  "files": ["../../../types/nativewind-env.d.ts"]
+  "files": [
+    "../../../types/nativewind-env.d.ts",
+    "../../../types/react-navigation.d.ts"
+  ]
 }
