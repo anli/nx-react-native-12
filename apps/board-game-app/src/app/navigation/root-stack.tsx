@@ -7,6 +7,7 @@ import { BottomNavigation, BottomNavigationProps } from '@shared/ui';
 import { ApolloProvider, useAuthentication } from '@shared/utils';
 import Config from 'react-native-config';
 import {
+  GameSelectPage,
   LoadingPage,
   PlayCreatePage,
   PlaysPage,
@@ -88,9 +89,10 @@ export const RootStack = () => {
         <Stack.Navigator screenOptions={screenOptions} initialRouteName="Tabs">
           <Stack.Group>
             <Stack.Screen name="Tabs" component={Tabs} />
+            <Stack.Screen name="PlayCreatePage" component={PlayCreatePage} />
           </Stack.Group>
           <Stack.Group screenOptions={{ presentation: 'modal' }}>
-            <Stack.Screen name="PlayCreatePage" component={PlayCreatePage} />
+            <Stack.Screen name="GameSelectPage" component={GameSelectPage} />
           </Stack.Group>
         </Stack.Navigator>
       </ApolloProvider>

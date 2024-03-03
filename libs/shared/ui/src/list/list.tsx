@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { FC } from 'react';
 import { Pressable, PressableProps, View } from 'react-native';
 import { Text } from '../text';
@@ -14,13 +15,17 @@ const ListItem: FC<ListItemProps> = ({
   description,
   RightComponent,
   LeftComponent,
+  className,
   ...rest
 }) => {
   const titleType = description ? 'title5' : 'title3';
 
   return (
     <Pressable
-      className="bg-white py-2 flex-row active:opacity-50 items-center gap-4"
+      className={clsx(
+        'bg-white py-2 flex-row active:opacity-50 items-center gap-4',
+        className
+      )}
       {...rest}
     >
       {LeftComponent}
