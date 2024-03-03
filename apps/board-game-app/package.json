@@ -29,6 +29,7 @@
     "react-native": "*",
     "react-native-auth0": "*",
     "react-native-config": "*",
+    "react-native-date-picker": "*",
     "react-native-heroicons": "*",
     "react-native-linear-gradient": "*",
     "react-native-progress": "*",

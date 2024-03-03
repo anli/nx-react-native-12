@@ -20,6 +20,7 @@ module.exports = {
             appDirectory,
             'node_modules/react-native-linear-gradient'
           ),
+          path.resolve(appDirectory, 'node_modules/react-native-date-picker'),
         ],
         use: {
           loader: 'babel-loader',

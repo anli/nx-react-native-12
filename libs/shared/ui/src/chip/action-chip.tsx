@@ -21,7 +21,7 @@ export const ActionChip: FC<ActionChipProps> = ({
   return (
     <Pressable
       className={clsx(
-        'flex-row self-start rounded-md active:opacity-50 items-center',
+        'flex-row self-start rounded-md active:opacity-50 items-center h-[40px]',
         outlined ? 'bg-white border border-gray-300' : 'bg-green-500 '
       )}
       onPress={onPress}
