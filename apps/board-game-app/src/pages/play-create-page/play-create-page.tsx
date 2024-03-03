@@ -1,25 +1,23 @@
-import { useGame } from '@entities/game';
 import { BackNavigationButton } from '@entities/page';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import {
-  ActionChip,
-  BoxButton,
-  ListHeader,
-  SafeAreaView,
-  TopNavigation,
-} from '@shared/ui';
+import { BoxButton, ListHeader, SafeAreaView, TopNavigation } from '@shared/ui';
 import { useYupValidationResolver } from '@shared/utils';
-import { FC, useEffect } from 'react';
+import { startOfDay } from 'date-fns';
+import { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { View } from 'react-native';
 import * as yup from 'yup';
+import { DateSelectChip } from './date-select-chip';
+import { GameSelectChip } from './game-select-chip';
 
 type FormData = {
   gameId: string;
+  date: string;
 };
 
 const validationSchema = yup.object({
   gameId: yup.string().required('Required'),
+  date: yup.string().required('Required'),
 });
 
 export const PlayCreatePage = () => {
@@ -29,6 +27,7 @@ export const PlayCreatePage = () => {
     useRoute<ReactNavigation.RouteProps<'PlayCreatePage'>>();
   const defaultValues = {
     gameId: undefined,
+    date: startOfDay(new Date()).toISOString(),
   };
   const {
     control,
@@ -63,6 +62,13 @@ export const PlayCreatePage = () => {
               control={control}
               render={({ field: { value } }) => <GameSelectChip id={value} />}
             />
+            <Controller
+              name="date"
+              control={control}
+              render={({ field: { value, onChange } }) => (
+                <DateSelectChip value={value} onChange={onChange} />
+              )}
+            />
           </View>
         </View>
         <View className="p-4">
@@ -75,24 +81,5 @@ export const PlayCreatePage = () => {
         </View>
       </SafeAreaView>
     </View>
-  );
-};
-
-export const GameSelectChip: FC<{ id?: string }> = ({ id }) => {
-  const { data } = useGame(id);
-  const { navigate } = useNavigation();
-
-  const handlePress = () => {
-    navigate('GameSelectPage');
-  };
-
-  return (
-    <ActionChip
-      title={data?.name ?? 'What did you played?'}
-      imagePath={data?.thumbnailUrl}
-      small
-      outlined
-      onPress={handlePress}
-    />
   );
 };
