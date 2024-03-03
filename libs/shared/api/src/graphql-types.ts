@@ -182,8 +182,6 @@ export type PlayersBoolExp = {
 /** unique or primary key constraints on table "players" */
 export enum PlayersConstraint {
   /** unique or primary key constraint on columns "id" */
-  PlayersNewIdKey = 'players_new_id_key',
-  /** unique or primary key constraint on columns "id" */
   PlayersPkey = 'players_pkey',
 }
 

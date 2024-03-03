@@ -7,7 +7,8 @@
   "files": [
     "../../node_modules/@nx/react-native/typings/svg.d.ts",
     "../../types/nativewind-env.d.ts",
-    "../../types/react-native-config.d.ts"
+    "../../types/react-native-config.d.ts",
+    "../../types/react-navigation.d.ts"
   ],
   "exclude": [
     "jest.config.ts",

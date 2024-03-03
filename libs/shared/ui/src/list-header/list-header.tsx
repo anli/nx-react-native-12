@@ -25,7 +25,7 @@ export const ListHeader: FC<ListHeaderProps> = ({
 }) => {
   return (
     <Pressable
-      className="bg-white py-2 px-4 justify-between flex-row items-center active:opacity-50"
+      className="bg-white py-2 justify-between flex-row items-center active:opacity-50"
       onPress={onPress}
     >
       <View className="flex-row items-center gap-2">

@@ -24,20 +24,17 @@ export const DateSelectChip: FC<DateSelectChipProps> = ({
 
   return (
     <>
-      {value ? (
-        <ActionChip
-          title={format(
-            new Date(startOfDay(value).toISOString()),
-            'E, d MMM yyyy'
-          )}
-          small
-          outlined
-          onPress={handleDatePickerToggle}
-          {...rest}
-        />
-      ) : (
-        <ActionChip title="Played on?" small outlined {...rest} />
-      )}
+      <ActionChip
+        title={
+          value
+            ? format(new Date(startOfDay(value).toISOString()), 'E, d MMM yyyy')
+            : 'Played on?'
+        }
+        small
+        outlined
+        onPress={handleDatePickerToggle}
+        {...rest}
+      />
       <DatePicker
         modal
         open={isDatePickerVisible}
