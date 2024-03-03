@@ -20,10 +20,12 @@
     "dotenv": "*",
     "fast-xml-parser": "*",
     "graphql": "*",
+    "lodash.debounce": "*",
     "metro-config": "*",
     "nativewind": "*",
     "react": "*",
     "react-dom": "*",
+    "react-hook-form": "*",
     "react-native": "*",
     "react-native-auth0": "*",
     "react-native-config": "*",
@@ -36,7 +38,8 @@
     "react-native-skeleton-placeholder": "*",
     "react-native-svg": "*",
     "tailwindcss": "*",
-    "tslib": "*"
+    "tslib": "*",
+    "yup": "*"
   },
   "devDependencies": {
     "@babel/core": "*",

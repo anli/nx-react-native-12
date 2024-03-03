@@ -15,8 +15,8 @@ export const TopNavigationRegular: FC<TopNavigationRegularProps> = ({
   LeftComponent,
 }) => {
   return (
-    <View className="bg-white px-4 h-[50px] justify-between flex-row items-center pt-2">
-      <View className="absolute right-0 left-0 items-center pt-2">
+    <View className="bg-white px-4 h-[50px] justify-between flex-row items-center">
+      <View className="absolute right-0 left-0 items-center">
         <Text type="heading2">{title}</Text>
       </View>
       <View>{LeftComponent}</View>

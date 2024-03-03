@@ -29,14 +29,7 @@ const NativePlaysList: FC<PlaysListProps> = ({ ...rest }) => {
     return <PlaysListItem {...item} />;
   };
 
-  return (
-    <FlatList
-      data={data}
-      contentContainerClassName="ios:px-4 android:px-2"
-      renderItem={renderItem}
-      {...rest}
-    />
-  );
+  return <FlatList data={data} renderItem={renderItem} {...rest} />;
 };
 
 const PlaysListItem: FC<PlaysListItemFragment> = ({
@@ -61,6 +54,7 @@ const PlaysListItem: FC<PlaysListItemFragment> = ({
       }
       title={gameData?.name}
       description={description}
+      className="px-4"
     />
   );
 };
@@ -88,7 +82,7 @@ const PlayerThumbnails: FC<Pick<PlaysListItemFragment, 'players'>> = ({
 const PlaceholderPlaysList: FC<PlaysListProps> = ({ ListHeaderComponent }) => {
   const items = Array.from({ length: 2 }, (_, index) => index);
   return (
-    <View className="ios:px-4 android:px-2">
+    <View className="px-4">
       {ListHeaderComponent as ReactNode}
       <SkeletonPlaceholder borderRadius={4}>
         <SkeletonPlaceholder.Item gap={16} paddingVertical={8}>

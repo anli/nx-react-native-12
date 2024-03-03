@@ -9,14 +9,13 @@ export const PlaysPage = () => {
       <SafeAreaView edges={['top']}>
         <View className="flex-1 py-4 gap-4">
           <View className="flex-1">
-            <PlaysList
-              ListHeaderComponent={
-                <TopNavigation.Emphasize
-                  title="Plays"
-                  RightComponent={<PlayCreateButton />}
-                />
-              }
-            />
+            <View className="px-4">
+              <TopNavigation.Emphasize
+                title="Plays"
+                RightComponent={<PlayCreateButton />}
+              />
+            </View>
+            <PlaysList />
           </View>
         </View>
       </SafeAreaView>
