@@ -10,6 +10,7 @@ import {
   GameSelectPage,
   LoadingPage,
   PlayCreatePage,
+  PlayerSelectPage,
   PlaysPage,
   ProfilePage,
   WelcomePage,
@@ -93,6 +94,10 @@ export const RootStack = () => {
           </Stack.Group>
           <Stack.Group screenOptions={{ presentation: 'modal' }}>
             <Stack.Screen name="GameSelectPage" component={GameSelectPage} />
+            <Stack.Screen
+              name="PlayerSelectPage"
+              component={PlayerSelectPage}
+            />
           </Stack.Group>
         </Stack.Navigator>
       </ApolloProvider>

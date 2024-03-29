@@ -1,5 +1,6 @@
 export * from './bottom-navigation';
 export * from './button';
+export * from './checkbox';
 export * from './chip';
 export * from './icon';
 export * from './list';

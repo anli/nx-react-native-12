@@ -2,11 +2,12 @@ import { BackNavigationButton } from '@entities/page';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { BoxButton, SafeAreaView, TopNavigation } from '@shared/ui';
 import { PlayCreateForm, usePlayCreateForm } from '@widgets/play';
+import { useEffect } from 'react';
 import { View } from 'react-native';
 
 export const PlayCreatePage = () => {
-  const { canGoBack, goBack } = useNavigation();
-  const { params: { gameId } = {} } =
+  const { canGoBack, goBack, navigate, setParams } = useNavigation();
+  const { params: { gameId, addPlayerId } = {} } =
     useRoute<ReactNavigation.RouteProps<'PlayCreatePage'>>();
   const {
     control,
@@ -14,9 +15,21 @@ export const PlayCreatePage = () => {
     formState: { isValid },
     playersFieldArray,
   } = usePlayCreateForm({ gameId });
+  const { append } = playersFieldArray;
+
+  useEffect(() => {
+    if (addPlayerId) {
+      append({ playerId: addPlayerId, isWinner: false });
+      setParams({ addPlayerId: undefined });
+    }
+  }, [addPlayerId, append, setParams]);
 
   const handleSave = () => {
     canGoBack() && goBack();
+  };
+
+  const handleSelect = (playerIds: string[]) => {
+    navigate('PlayerSelectPage', { playerIds });
   };
 
   return (
@@ -30,6 +43,7 @@ export const PlayCreatePage = () => {
           <PlayCreateForm
             control={control}
             playersFieldArray={playersFieldArray}
+            onSelect={handleSelect}
           />
         </View>
         <View className="p-4">
