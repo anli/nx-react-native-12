@@ -11,14 +11,20 @@ import { PlayPlayerItem } from './play-player-item';
 type PlayCreateFormProps = {
   control: Control<PlayCreateFormData>;
   playersFieldArray: UseFieldArrayReturn<PlayCreateFormData, 'players'>;
+  onSelect?: (playerIds: string[]) => void;
 };
 
 export const PlayCreateForm: FC<PlayCreateFormProps> = ({
   control,
   playersFieldArray,
+  onSelect,
 }) => {
   const { fields } = playersFieldArray;
   const { data: { players } = {} } = usePlayCreateFormQuery();
+
+  const handleSelect = () => {
+    onSelect?.(fields.map((_field) => _field.playerId));
+  };
 
   return (
     <View className="flex-1 px-4">
@@ -38,7 +44,12 @@ export const PlayCreateForm: FC<PlayCreateFormProps> = ({
         />
       </View>
 
-      <ListHeader title="Players" buttonType="text" buttonTitle="Select" />
+      <ListHeader
+        title="Players"
+        buttonType="text"
+        buttonTitle="Select"
+        onPress={handleSelect}
+      />
       {fields?.map((_field) => {
         const player = players?.find(
           (_player) => _player.id === _field.playerId

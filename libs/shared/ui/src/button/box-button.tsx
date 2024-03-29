@@ -47,8 +47,9 @@ export const BoxButton: FC<BoxButtonProps> = ({
     <Pressable
       className={clsx(
         'py-3.5 px-6 rounded-md',
-        typeConfigs[type]?.container,
-        disabled ? disabledConfigs[type]?.container : undefined,
+        disabled
+          ? disabledConfigs[type]?.container
+          : typeConfigs[type]?.container,
         className
       )}
       disabled={disabled}

@@ -10,6 +10,7 @@ import { RootStack } from './navigation';
 remapProps(FlatList, {
   className: 'style',
   contentContainerClassName: 'contentContainerStyle',
+  ListFooterComponentClassName: 'ListFooterComponentStyle',
 });
 
 export const App = () => {

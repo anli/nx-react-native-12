@@ -4,7 +4,7 @@ import { Pressable, PressableProps, View } from 'react-native';
 import { Text } from '../text';
 
 type ListItemProps = PressableProps & {
-  title?: string;
+  title?: string | null;
   description?: string;
   RightComponent?: JSX.Element;
   LeftComponent?: JSX.Element;
