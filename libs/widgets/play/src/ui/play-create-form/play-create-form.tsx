@@ -50,7 +50,7 @@ export const PlayCreateForm: FC<PlayCreateFormProps> = ({
         buttonTitle="Select"
         onPress={handleSelect}
       />
-      {fields?.map((_field) => {
+      {fields?.map((_field, index) => {
         const player = players?.find(
           (_player) => _player.id === _field.playerId
         );
@@ -59,6 +59,13 @@ export const PlayCreateForm: FC<PlayCreateFormProps> = ({
             key={_field.id}
             {..._field}
             name={player?.name ?? ''}
+            onWinnerPress={() =>
+              playersFieldArray.update(index, {
+                ..._field,
+                isWinner: !_field.isWinner,
+              })
+            }
+            onDelete={() => playersFieldArray.remove(index)}
           />
         );
       })}
