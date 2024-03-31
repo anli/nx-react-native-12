@@ -40,7 +40,8 @@
     "react-native-svg": "*",
     "tailwindcss": "*",
     "tslib": "*",
-    "yup": "*"
+    "yup": "*",
+    "react-native-gesture-handler": "*"
   },
   "devDependencies": {
     "@babel/core": "*",
